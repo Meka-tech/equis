@@ -31,6 +31,7 @@ const Button = styled.div`
   transition: all 0.1s ease-in-out;
   cursor: pointer;
   width: fit-content;
+  max-width: 90%;
   svg {
     filter: drop-shadow(0px 8px 10px rgb(0 147 255 / 0.3));
   }

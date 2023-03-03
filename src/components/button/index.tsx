@@ -40,4 +40,9 @@ const Container = styled.div<IProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.1s ease-out;
+  :hover {
+    transform: scale(1.08, 1.05);
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
+  }
 `;
