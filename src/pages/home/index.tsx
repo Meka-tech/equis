@@ -38,7 +38,11 @@ export const Home = () => {
           <SubHeading>Diverse mechanism for a quality investment</SubHeading>
           <Buttons>
             <PrimaryButton text="Current Opportunities" />
-            <PrimaryButton text="Learn More About Investing" variant="white" />
+            <PrimaryButton
+              text="Learn More About Investing"
+              variant="white"
+              to="/learn-more-real-estate"
+            />
           </Buttons>
           <Scroll>
             <h3> Scroll Down</h3> <Mouse width={"2.5rem"} />
@@ -554,3 +558,5 @@ const TextArea = styled.textarea`
     color: rgba(48, 58, 66, 0.5);
   }
 `;
+
+export * from "./learnMore";

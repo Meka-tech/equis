@@ -1,26 +1,29 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 interface IProps {
   fontSize?: number;
   variant?: string;
   width?: string;
   text?: string;
+  to?: string;
 }
 
 export const PrimaryButton: FC<IProps> = ({
   fontSize = 1.6,
   variant,
   width,
-  text
+  text,
+  to = ""
 }) => {
   return (
-    <Container fontSize={fontSize} variant={variant} width={width}>
+    <Container fontSize={fontSize} variant={variant} width={width} to={to}>
       {text}
     </Container>
   );
 };
 
-const Container = styled.div<IProps>`
+const Container = styled(Link)<IProps>`
   cursor: pointer;
   background-color: ${(props) => (props.variant ? "" : "rgba(0, 147, 255, 1)")};
   color: ${(props) =>
@@ -41,6 +44,7 @@ const Container = styled.div<IProps>`
   align-items: center;
   justify-content: center;
   transition: all 0.1s ease-out;
+  text-decoration: none;
   :hover {
     transform: scale(1.08, 1.05);
     box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);

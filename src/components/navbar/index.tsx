@@ -11,7 +11,7 @@ interface IProps {
 export const Navbar: FC<IProps> = ({ activeNav = "home" }) => {
   const NavDetails = [
     ["home", "/"],
-    ["cypto investments"],
+    ["crypto investments", "/crypto-investment"],
     ["about us", "/about-us"]
   ];
 

@@ -28,8 +28,8 @@ export const Footer: FC = ({}) => {
         </Column>
         <Column>
           <ColumnHeader>Links</ColumnHeader>
-          <PageLink to="">FAQs</PageLink>
-          <PageLink to="">Terms and conditions</PageLink>
+          <PageLink to="/faqs">FAQs</PageLink>
+          <PageLink to="/terms&conditions">Terms and conditions</PageLink>
         </Column>
         <Column>
           <ColumnHeader>Investment Disclosure</ColumnHeader>
