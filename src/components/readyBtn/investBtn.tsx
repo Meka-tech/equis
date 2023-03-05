@@ -8,19 +8,13 @@ interface IProps {
   size?: number;
   to?: string;
 }
-export const ReadyBtn: FC<IProps> = ({ size = 10, to = "" }) => {
+export const InvestBtn: FC<IProps> = ({ size = 3, to = "" }) => {
   return (
     <Container to={to}>
       <Button>
-        <ButtonSVG width={`${size * 10}rem`} />
+        <ButtonSVG width={`${size * 10}rem`} height={"5rem"} />
         <TextBox>
-          <Header size={size}>Ready to invest?</Header>
-          <PrimaryButton
-            fontSize={(size / 10) * 1.6}
-            variant="white"
-            text="View Current Opportunities"
-            to={to}
-          />
+          <Header size={size}>Invest Now</Header>
         </TextBox>
       </Button>
     </Container>
@@ -34,7 +28,7 @@ const Button = styled.div`
   transition: all 0.1s ease-in-out;
   cursor: pointer;
   width: fit-content;
-  max-width: 90%;
+  max-width: 100%;
   svg {
     filter: drop-shadow(0px 8px 10px rgb(0 147 255 / 0.3));
   }
@@ -55,19 +49,18 @@ const TextBox = styled.div`
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-40%, -50%);
+  transform: translate(-50%, -40%);
 `;
 
 interface Itext {
   size: number;
 }
 
-const Header = styled.h2<Itext>`
+const Header = styled.h4<Itext>`
   color: white;
   font-weight: 700;
-  font-size: ${(props) => `${props.size * 0.3}
+  font-size: ${(props) => `${props.size * 0.5}
 rem`};
   font-family: "Poppins", sans-serif;
   margin-bottom: 2rem;
 `;
-export * from "./investBtn";

@@ -17,7 +17,10 @@ export const LearnMoreCryptoInvestment = () => {
           </Heading>
           <SubHeading>We understand value and deliver results</SubHeading>
           <Buttons>
-            <PrimaryButton text="Current Opportunities" />
+            <PrimaryButton
+              text="Current Opportunities"
+              to="/current-opportunities-crypto-investment"
+            />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
@@ -110,7 +113,7 @@ interface IHeader {
   img: string;
 }
 const Header = styled.div<IHeader>`
-  height: 95vh;
+  height: 90vh;
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.6),

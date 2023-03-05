@@ -4,6 +4,7 @@ import "./App.css";
 import {
   AboutUs,
   CryptoInvestment,
+  CurrentOpportunitiesCryptoInvestment,
   CurrentOpportunitiesRealEstate,
   FAQs,
   Home,
@@ -15,6 +16,7 @@ import {
   SignUp,
   TermsConditions
 } from "./pages";
+import { DashboardHome } from "./pages/dashboard";
 import { ScrollToTop } from "./utilities/ScrollToTop";
 
 function App() {
@@ -28,6 +30,10 @@ function App() {
             <Route
               path="/learn-more-crypto-investment"
               element={<LearnMoreCryptoInvestment />}
+            />
+            <Route
+              path="/current-opportunities-crypto-investment"
+              element={<CurrentOpportunitiesCryptoInvestment />}
             />
             <Route
               path="/learn-more-real-estate"
@@ -44,6 +50,7 @@ function App() {
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registered" element={<RegisteredPage />} />
+            <Route path="/dashboard-home" element={<DashboardHome />} />
           </Routes>
         </ScrollToTop>
       </Router>

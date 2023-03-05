@@ -23,7 +23,7 @@ export const CryptoInvestment = () => {
           </Heading>
           <SubHeading>We understand value and deliver results</SubHeading>
           <Buttons>
-            <PrimaryButton text="Current Opportunities" />
+            <PrimaryButton text="Current Opportunities" to="/current-opportunities-crypto-investment"/>
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
@@ -86,7 +86,7 @@ export const CryptoInvestment = () => {
       </Cards>
       <Body>
         <ReadyToInvest>
-          <ReadyBtn size={9} />
+          <ReadyBtn size={9} to="/current-opportunities-crypto-investment" />
         </ReadyToInvest>
       </Body>
       <Footer />
@@ -102,7 +102,7 @@ interface IHeader {
   img: string;
 }
 const Header = styled.div<IHeader>`
-  height: 95vh;
+  height: 90vh;
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.6),
@@ -238,3 +238,4 @@ const CardInner = styled.div`
 `;
 
 export * from "./learnMore";
+export * from "./currentOpportunities";
