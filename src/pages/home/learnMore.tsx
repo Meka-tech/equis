@@ -18,7 +18,10 @@ export const LearnMoreRealState = () => {
           </Heading>
           <SubHeading>Diverse mechanism for a quality investment</SubHeading>
           <Buttons>
-            <PrimaryButton text="Current Opportunities" />
+            <PrimaryButton
+              text="Current Opportunities"
+              to="/current-opportunities-real-estate"
+            />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"

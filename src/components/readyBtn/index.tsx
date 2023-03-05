@@ -1,14 +1,16 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as ButtonSVG } from "../../images/ReadyBtn.svg";
 import { PrimaryButton } from "../button";
 
 interface IProps {
   size?: number;
+  to?: string;
 }
-export const ReadyBtn: FC<IProps> = ({ size = 10 }) => {
+export const ReadyBtn: FC<IProps> = ({ size = 10, to = "" }) => {
   return (
-    <Container>
+    <Container to={to}>
       <Button>
         <ButtonSVG width={`${size * 10}rem`} />
         <TextBox>
@@ -17,6 +19,7 @@ export const ReadyBtn: FC<IProps> = ({ size = 10 }) => {
             fontSize={(size / 10) * 1.6}
             variant="white"
             text="View Current Opportunities"
+            to={to}
           />
         </TextBox>
       </Button>
@@ -24,7 +27,7 @@ export const ReadyBtn: FC<IProps> = ({ size = 10 }) => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled(Link)``;
 
 const Button = styled.div`
   position: relative;

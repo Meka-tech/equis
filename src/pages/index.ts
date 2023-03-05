@@ -3,3 +3,4 @@ export * from "./cryptoInvestments";
 export * from "./about";
 export * from "./faqs";
 export * from "./terms";
+export * from "./auth";

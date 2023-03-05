@@ -35,8 +35,8 @@ export const Navbar: FC<IProps> = ({ activeNav = "home" }) => {
           ))}
         </NavItems>
         <Buttons>
-          <LoginBtn>Log in</LoginBtn>
-          <SignUpBtn>Register</SignUpBtn>
+          <LoginBtn to="/login">Log in</LoginBtn>
+          <SignUpBtn to="/sign-up">Register</SignUpBtn>
         </Buttons>
       </Inner>
     </Container>
@@ -115,7 +115,7 @@ const Buttons = styled.div`
   justify-content: flex-end;
 `;
 
-const LoginBtn = styled.div`
+const LoginBtn = styled(Link)`
   color: rgba(0, 147, 255, 1);
   border: 1px solid rgba(0, 147, 255, 1);
   padding: 0.5rem 2rem;

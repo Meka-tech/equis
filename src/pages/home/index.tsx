@@ -37,7 +37,10 @@ export const Home = () => {
           </Heading>
           <SubHeading>Diverse mechanism for a quality investment</SubHeading>
           <Buttons>
-            <PrimaryButton text="Current Opportunities" />
+            <PrimaryButton
+              text="Current Opportunities"
+              to="/current-opportunities-real-estate"
+            />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
@@ -112,8 +115,15 @@ export const Home = () => {
             <BlueShadow src={BlueShade} alt="shade" />
           </Cards>
           <Buttons>
-            <PrimaryButton text="Current Opportunities" />
-            <PrimaryButton text="Learn More About Investing" variant="blue" />
+            <PrimaryButton
+              text="Current Opportunities"
+              to="/current-opportunities-real-estate"
+            />
+            <PrimaryButton
+              text="Learn More About Investing"
+              variant="blue"
+              to="/learn-more-real-estate"
+            />
           </Buttons>
         </Why>
         <AboutDiv>
@@ -140,7 +150,7 @@ export const Home = () => {
           </AboutImage>
         </AboutDiv>
         <ReadyToInvest>
-          <ReadyBtn size={9} />
+          <ReadyBtn size={9} to="/current-opportunities-real-estate" />
         </ReadyToInvest>
         <MailList>
           <InputDiv>
@@ -217,7 +227,7 @@ interface IHeader {
   img: string;
 }
 const Header = styled.div<IHeader>`
-  height: 95vh;
+  height: 90vh;
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.4),
@@ -560,3 +570,5 @@ const TextArea = styled.textarea`
 `;
 
 export * from "./learnMore";
+export * from "./currentOpportunities";
+export * from "./invest";

@@ -7,6 +7,7 @@ interface IProps {
   width?: string;
   text?: string;
   to?: string;
+  onClick?: () => void;
 }
 
 export const PrimaryButton: FC<IProps> = ({
@@ -14,10 +15,17 @@ export const PrimaryButton: FC<IProps> = ({
   variant,
   width,
   text,
-  to = ""
+  to = "",
+  onClick
 }) => {
   return (
-    <Container fontSize={fontSize} variant={variant} width={width} to={to}>
+    <Container
+      fontSize={fontSize}
+      variant={variant}
+      width={width}
+      to={to}
+      onClick={onClick}
+    >
       {text}
     </Container>
   );
