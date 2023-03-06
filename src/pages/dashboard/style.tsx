@@ -17,11 +17,13 @@ export const Container = styled.div`
 
 export const Body = styled.div`
   height: 100vh;
-  width: 77.5vw;
+  width: 80vw;
   box-sizing: border-box;
-  padding: 3rem 8rem;
+  padding: 3rem 5rem;
   overflow-y: scroll;
   background-color: white;
+  margin: 0 auto;
+  position: relative;
   ${tab({
     width: "100%",
     padding: "2rem",

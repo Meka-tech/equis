@@ -2,14 +2,17 @@ import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PrimaryButton } from "../../components";
-import HouseImage from "../../images/img/house.png";
 
 interface IProps {
   title: string;
   description: string;
   image?: any;
 }
-export const Opportunity: FC<IProps> = ({ title, description, image }) => {
+export const RealEstateOpportunity: FC<IProps> = ({
+  title,
+  description,
+  image
+}) => {
   let navigate = useNavigate();
   const Onclick = () => {
     navigate("/invest-real-estate", {

@@ -35,7 +35,11 @@ export const FAQs = () => {
           />
         </Elements>
         <ReadyToInvest>
-          <ReadyBtn size={9} />
+          <ReadyBtn
+            size={9}
+            buttonText="Proceed to fixed plans"
+            to="/investments"
+          />
         </ReadyToInvest>
       </Body>
       <Footer />

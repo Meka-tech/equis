@@ -150,7 +150,7 @@ export const AboutUs = () => {
           <CertificateImg src={Cerificate} alt="certificate" />
         </ImageContainer>
         <ReadyToInvest>
-          <ReadyBtn size={9} />
+          <ReadyBtn size={9} to="/investments" />
         </ReadyToInvest>
       </Body>
       <Footer />

@@ -8,6 +8,9 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 
 import { tab } from "../../utilities/responsive";
 import { Opportunity } from "./opportunity";
+import HouseImage from "../../images/img/house_one.jpg";
+import HouseImageTwo from "../../images/img/house_two.png";
+import HouseImageThree from "../../images/img/house_three.png";
 
 export const CurrentOpportunitiesRealEstate = () => {
   return (
@@ -42,14 +45,17 @@ export const CurrentOpportunitiesRealEstate = () => {
           <Opportunity
             title="Equity Raising for Luxury House in San Diego"
             description="Located in San Diego, USA we mapped out the best locations that assures a minimum of 35% per yearly irrespective of the real estate market conditions. Once the investment is recorded, the property is under our guidance and yields profits yearly."
+            image={HouseImage}
           />
           <Opportunity
             title="Equity Raising for Luxury House in Montreal"
             description="Located in Montreal, Canada we mapped out the best locations that assures a minimum of 35% per yearly irrespective of the real estate market conditions. Once the investment is recorded, the property is under our guidance and yields profits yearly."
+            image={HouseImageTwo}
           />
           <Opportunity
             title="Equity Raising for Luxury House in Vancouver"
             description="Located in Montreal, Canada we mapped out the best locations that assures a minimum of 35% per yearly irrespective of the real estate market conditions. Once the investment is recorded, the property is under our guidance and yields profits yearly."
+            image={HouseImageThree}
           />
         </Opportunities>
       </Body>

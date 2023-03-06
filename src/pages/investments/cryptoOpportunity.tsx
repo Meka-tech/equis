@@ -11,7 +11,7 @@ interface IProps {
   min: string;
   max: string;
 }
-export const Opportunity: FC<IProps> = ({
+export const CryptoOpportunity: FC<IProps> = ({
   heading,
   duration,
   week,

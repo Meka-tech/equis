@@ -8,12 +8,24 @@ import HouseImage from "../../images/img/house.png";
 import { AiOutlineArrowDown } from "react-icons/ai";
 
 import { tab } from "../../utilities/responsive";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const InvestRealEstate = () => {
   const location = useLocation();
-  const { title, description } = location.state;
-  console.log(location);
+  const navigate = useNavigate();
+  const { title, description, image } = location.state;
+  const Onclick = () => {
+    navigate("/dashboard-deposit", {
+      state: {
+        investment: "real-estate",
+        plan: title,
+        profit: 35,
+        duration: ""
+      }
+    });
+  };
+  // console.log(title);
+
   return (
     <Container>
       <Navbar />
@@ -45,14 +57,14 @@ export const InvestRealEstate = () => {
         <Investment>
           <InvestHeading>
             Invest in {title}
-            <Price>$5000</Price>
+            <Price> $5000</Price>
           </InvestHeading>
           <ImageContainer>
-            <img src={HouseImage} alt="houseImage" />
+            <img src={image} alt="houseImage" />
           </ImageContainer>
           <Description>{description}</Description>
-          <Button>
-            <PrimaryButton text="Become Investor now" to="/sign-up" />
+          <Button onClick={Onclick}>
+            <PrimaryButton text="Become Investor now" />
           </Button>
         </Investment>
       </Body>
@@ -154,7 +166,7 @@ const InvestHeading = styled.h2`
   margin: 0 auto;
   width: 80%;
 `;
-const Price = styled(InvestHeading)`
+const Price = styled.span`
   color: rgba(0, 147, 255, 1);
   display: inline;
 `;
@@ -167,6 +179,7 @@ const ImageContainer = styled.div`
   img {
     object-fit: cover;
     width: 60rem;
+    margin-bottom: 2rem;
   }
 `;
 const Description = styled.h3`

@@ -8,6 +8,7 @@ import {
   CurrentOpportunitiesRealEstate,
   FAQs,
   Home,
+  Investments,
   InvestRealEstate,
   LearnMoreCryptoInvestment,
   LearnMoreRealState,
@@ -16,7 +17,13 @@ import {
   SignUp,
   TermsConditions
 } from "./pages";
-import { DashboardHome } from "./pages/dashboard";
+import {
+  DashboardHome,
+  DashboardProfile,
+  Logout,
+  DashboardWithdraw,
+  DashboardDeposit
+} from "./pages/dashboard";
 import { ScrollToTop } from "./utilities/ScrollToTop";
 
 function App() {
@@ -44,6 +51,7 @@ function App() {
               element={<CurrentOpportunitiesRealEstate />}
             />
             <Route path="/invest-real-estate" element={<InvestRealEstate />} />
+            <Route path="/investments" element={<Investments />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/terms&conditions" element={<TermsConditions />} />
@@ -51,6 +59,10 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/registered" element={<RegisteredPage />} />
             <Route path="/dashboard-home" element={<DashboardHome />} />
+            <Route path="/dashboard-profile" element={<DashboardProfile />} />
+            <Route path="/dashboard-withdraw" element={<DashboardWithdraw />} />
+            <Route path="/dashboard-deposit" element={<DashboardDeposit />} />
+            <Route path="/logout" element={<Logout />} />
           </Routes>
         </ScrollToTop>
       </Router>

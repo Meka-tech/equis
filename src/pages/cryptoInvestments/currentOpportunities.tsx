@@ -42,35 +42,35 @@ export const CurrentOpportunitiesCryptoInvestment = () => {
       <Body>
         <Opportunities>
           <Opportunity
-            heading="AAA"
+            heading="EQUIS BRONZE"
             week="3.5"
             duration="6 MONTHS"
             min={"100"}
             max={"3,999"}
           />
           <Opportunity
-            heading="AA+"
+            heading="EQUIS SILVER"
             week="3.9"
             duration="6 MONTHS"
             min={"4,000"}
             max={"19,999"}
           />
           <Opportunity
-            heading="AA"
+            heading="EQUIS DIAMOND"
             week="4.5"
             duration="6 MONTHS"
             min={"20,000"}
             max={"45,999"}
           />
           <Opportunity
-            heading="A+"
+            heading="EQUIS GOLD"
             week="5.0"
             duration="6 MONTHS"
             min={"45,999"}
             max={"99,999"}
           />
           <Opportunity
-            heading="A"
+            heading="EQUIS PLATINUM"
             week="3.5"
             duration="6 MONTHS"
             min={"100,000"}

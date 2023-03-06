@@ -6,11 +6,12 @@ import { PrimaryButton } from "../button";
 
 interface IProps {
   size?: number;
-  to?: string;
+
+  onclick?: () => void;
 }
-export const InvestBtn: FC<IProps> = ({ size = 3, to = "" }) => {
+export const InvestBtn: FC<IProps> = ({ size = 3, onclick }) => {
   return (
-    <Container to={to}>
+    <Container onClick={onclick}>
       <Button>
         <ButtonSVG width={`${size * 10}rem`} height={"5rem"} />
         <TextBox>
@@ -21,7 +22,7 @@ export const InvestBtn: FC<IProps> = ({ size = 3, to = "" }) => {
   );
 };
 
-const Container = styled(Link)``;
+const Container = styled.div``;
 
 const Button = styled.div`
   position: relative;
