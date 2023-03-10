@@ -26,12 +26,10 @@ export const Body = styled.div`
   position: relative;
   ${tab({
     width: "100%",
-    padding: "2rem",
-    backgroundColor: "rgba(240, 246, 255, 1)"
+    padding: "2rem"
   })};
   ${mobile({
     width: "100%",
-    padding: "2rem",
-    backgroundColor: "rgba(240, 246, 255, 1)"
+    padding: "2rem"
   })};
 `;

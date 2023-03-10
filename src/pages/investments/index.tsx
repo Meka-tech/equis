@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Footer, Navbar, PrimaryButton } from "../../components";
 import WaveHeader from "../../images/img/waveHeader.png";
-import { tab } from "../../utilities/responsive";
+import { mobile, tab } from "../../utilities/responsive";
 import { CryptoOpportunity } from "./cryptoOpportunity";
 import { RealEstateOpportunity } from "./realOpportunity";
 import HouseImage from "../../images/img/house_one.jpg";
@@ -123,6 +123,12 @@ const HeadingImage = styled.div<IHeader>`
     font-size: 4.2vw;
     line-height: 4rem;
     margin-bottom: 5rem;
+    ${tab({
+      fontSize: "3rem"
+    })}
+    ${mobile({
+      fontSize: "2.5rem"
+    })}
   }
 `;
 const Heading = styled.h2`
@@ -133,6 +139,12 @@ const Heading = styled.h2`
   line-height: 4rem;
   margin-top: 10rem;
   margin-bottom: 20rem;
+  ${tab({
+    fontSize: "3rem"
+  })}
+  ${mobile({
+    fontSize: "2.5rem"
+  })}
 `;
 const Body = styled.div`
   padding: 10rem;

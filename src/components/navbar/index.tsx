@@ -144,7 +144,7 @@ const NavItems = styled.div`
   font-size: 1.6rem;
   flex: 0.3;
   ${tab({
-    minWidth: "40%"
+    display: "none"
   })}
   ${mobile({
     display: "none"
@@ -176,6 +176,9 @@ const Buttons = styled.div`
   align-items: center;
   flex: 0.3;
   justify-content: flex-end;
+  ${tab({
+    display: "none"
+  })}
   ${mobile({
     display: "none"
   })}

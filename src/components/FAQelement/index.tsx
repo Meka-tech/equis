@@ -57,13 +57,15 @@ const Container = styled.div`
   padding-bottom: 5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   font-family: "poppins";
-  ${mobile({
-    marginTop: "2rem",
-    paddingBottom: "2rem"
-  })}
   ${tab({
     marginTop: "3rem",
+    padding: "0 1rem",
     paddingBottom: "3rem"
+  })}
+  ${mobile({
+    marginTop: "2rem",
+    padding: "0 1rem",
+    paddingBottom: "2rem"
   })}
 `;
 interface OpenProps {

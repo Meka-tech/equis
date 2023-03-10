@@ -5,6 +5,7 @@ import { Body, Container } from "../style";
 
 import { ReactComponent as SuccessIcon } from "../../../images/icons/successIcon.svg";
 import { useLocation } from "react-router-dom";
+import { tab } from "../../../utilities/responsive";
 
 export const DashboardDeposit = () => {
   const [success, setSucess] = useState(false);
@@ -81,6 +82,9 @@ const Box = styled.div`
   font-family: "poppins", sans-serif;
   padding: 5rem 10rem;
   margin-top: 5rem;
+  ${tab({
+    padding: "5rem 3rem"
+  })}
 `;
 
 const Detail = styled.div`
@@ -95,10 +99,16 @@ const Detail = styled.div`
   h2 {
     font-size: 1.6rem;
     font-weight: 500;
+    ${tab({
+      fontSize: "1.4rem"
+    })}
   }
   h3 {
     font-size: 1.6rem;
     font-weight: 500;
+    ${tab({
+      fontSize: "1.4rem"
+    })}
   }
 `;
 const Text = styled.h3`
@@ -106,6 +116,9 @@ const Text = styled.h3`
   font-size: 1.6rem;
   width: 80%;
   margin-bottom: 0.5rem;
+  ${tab({
+    fontSize: "1.4rem"
+  })}
 `;
 const Address = styled.a`
   font-weight: 500;
@@ -114,6 +127,9 @@ const Address = styled.a`
   margin-bottom: 1rem;
   color: rgba(0, 147, 255, 1);
   cursor: pointer;
+  ${tab({
+    fontSize: "1.4rem"
+  })}
 `;
 const Input = styled.input`
   outline: none;
@@ -129,6 +145,10 @@ const Input = styled.input`
   ::placeholder {
     color: rgb(0, 0, 0);
   }
+  ${tab({
+    fontSize: "1.4rem",
+    width: "20rem"
+  })}
 `;
 const Button = styled.div`
   width: fit-content;
@@ -146,5 +166,8 @@ const SuccessDiv = styled.div`
     font-size: 1.6rem;
     margin-top: 5rem;
     text-align: center;
+    ${tab({
+      fontSize: "1.4rem"
+    })}
   }
 `;

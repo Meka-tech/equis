@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { DashboardSidebar, PrimaryButton } from "../../../components";
+import { tab } from "../../../utilities/responsive";
 import { Body, Container } from "../style";
 
 export const DashboardHome = () => {
@@ -136,11 +137,17 @@ const DepositRow = styled.div`
     font-weight: 500;
     margin-bottom: 4rem;
     font-size: 1.6rem;
+    ${tab({
+      fontSize: "1.4rem"
+    })};
   }
   h3 {
     font-size: 1.6rem;
     font-weight: 500;
     margin-bottom: 4rem;
+    ${tab({
+      fontSize: "1.4rem"
+    })};
   }
 `;
 
@@ -149,6 +156,10 @@ const ColorGreen = styled.div`
   height: 2rem;
   border-radius: 50%;
   background-color: rgba(68, 255, 2, 1);
+  ${tab({
+    width: "1.5rem",
+    height: "1.5rem"
+  })};
 `;
 
 const ColorBlue = styled(ColorGreen)`
@@ -175,6 +186,9 @@ const Detail = styled.div`
   h2 {
     font-size: 1.6rem;
     font-weight: 500;
+    ${tab({
+      fontSize: "1.4rem"
+    })};
   }
 `;
 const Button = styled.div`

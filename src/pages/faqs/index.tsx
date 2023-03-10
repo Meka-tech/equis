@@ -53,10 +53,10 @@ const Container = styled.div``;
 const Body = styled.div`
   padding: 1rem 10rem;
   ${mobile({
-    padding: "1rem 2rem"
+    padding: "1rem"
   })}
   ${tab({
-    padding: "1rem 5rem"
+    padding: "1rem 2rem"
   })}
 `;
 

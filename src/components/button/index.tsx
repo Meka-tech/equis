@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { mobile, tab } from "../../utilities/responsive";
 interface IProps {
   fontSize?: number;
   variant?: string;
@@ -57,4 +58,16 @@ const Container = styled(Link)<IProps>`
     transform: scale(1.08, 1.05);
     box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
   }
+  ${mobile({
+    padding: "0.5rem 0.8rem",
+    fontSize: `${(props: { fontSize: any }) =>
+      props.fontSize ? `${props.fontSize / 2}rem` : "1rem"}`
+  })}
+  ${tab({
+    borderRadius: "0.8rem 1rem",
+    padding: "0.5rem , 1rem",
+    fontSize: `${(props: { fontSize: any }) =>
+      props.fontSize ? `${props.fontSize / 2}rem` : "1rem"}`,
+    width: "100%"
+  })}
 `;

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { InvestBtn, ReadyBtn } from "../../components";
 import WaveBackground from "../../images/img/wavebackground.png";
+import { mobile, tab } from "../../utilities/responsive";
 
 interface IProps {
   heading: string;
@@ -53,6 +54,12 @@ export const Opportunity: FC<IProps> = ({
 const Container = styled.div`
   width: 60rem;
   margin-bottom: 20rem;
+  ${tab({
+    width: "45rem"
+  })}
+  ${mobile({
+    width: "40rem"
+  })}
 `;
 
 const Header = styled.div`
@@ -62,6 +69,12 @@ const Header = styled.div`
   align-items: center;
   justify-content: center;
   height: 8rem;
+  ${tab({
+    height: "6rem"
+  })}
+  ${mobile({
+    height: "6rem"
+  })}
   img {
     position: absolute;
     height: 100%;
@@ -72,6 +85,12 @@ const Header = styled.div`
     font-family: "poppins", sans-serif;
     z-index: 1;
     font-size: 3.5rem;
+    ${tab({
+      fontSize: "3rem"
+    })}
+    ${mobile({
+      fontSize: "2rem"
+    })}
   }
 `;
 const Body = styled.div`
@@ -85,6 +104,9 @@ const Body = styled.div`
   font-weight: 600;
   h2 {
     font-size: 2rem;
+    ${mobile({
+      fontSize: "1.8rem"
+    })}
   }
   h3 {
     margin-bottom: 3rem;

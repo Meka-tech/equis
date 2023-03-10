@@ -24,7 +24,7 @@ import { ReactComponent as SelectAll } from "../../images/icons/selectAll.svg";
 import { ReactComponent as Database } from "../../images/icons/database.svg";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import BlueShade from "../../images/img/blueShadow.png";
-import { tab } from "../../utilities/responsive";
+import { mobile, tab } from "../../utilities/responsive";
 
 export const AboutUs = () => {
   return (
@@ -158,8 +158,7 @@ export const AboutUs = () => {
   );
 };
 
-const Container = styled.div`
-`;
+const Container = styled.div``;
 
 interface IHeader {
   img: string;
@@ -176,6 +175,9 @@ const Header = styled.div<IHeader>`
   /* background-attachment: fixed; */
   background-position: center;
   position: relative;
+  ${mobile({
+    height: "70vh"
+  })}
 `;
 
 const TextBox = styled.div`
@@ -186,12 +188,21 @@ const TextBox = styled.div`
   text-align: center;
   font-family: "poppins";
   color: white;
+  ${mobile({
+    width: "100%"
+  })}
+  ${tab({
+    width: "100%"
+  })}
 `;
 
 const Heading = styled.h1`
   font-size: 4rem;
   margin-bottom: 2%;
   ${tab({
+    fontSize: "2.5rem"
+  })}
+  ${mobile({
     fontSize: "2.5rem"
   })}
 `;
@@ -201,6 +212,9 @@ const SubHeading = styled.h2`
   font-size: 2rem;
   margin-bottom: 15%;
   ${tab({
+    fontSize: "1.8rem"
+  })}
+  ${mobile({
     fontSize: "1.8rem"
   })}
 `;
@@ -222,6 +236,9 @@ const Scroll = styled.div`
 const Body = styled.div`
   padding: 1rem 10rem;
   ${tab({
+    padding: "1rem 5rem"
+  })}
+  ${mobile({
     padding: "1rem 5rem"
   })}
 `;
@@ -291,6 +308,10 @@ const Cards = styled.div`
     display: "flex",
     flexDirection: "column"
   })}
+  ${mobile({
+    display: "flex",
+    flexDirection: "column"
+  })}
 `;
 const BlueShadow = styled.img`
   left: 50%;
@@ -318,6 +339,14 @@ const HWInner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${tab({
+    display: "flex",
+    flexDirection: "column"
+  })}
+  ${mobile({
+    display: "flex",
+    flexDirection: "column"
+  })}
 `;
 const HWHeader = styled.h2`
   font-family: "poppins";
@@ -333,6 +362,14 @@ const Worker = styled.div`
   text-align: center;
   width: 25%;
   margin-bottom: 10rem;
+  ${tab({
+    width: "80%",
+    marginBottom: "5rem"
+  })}
+  ${mobile({
+    width: "80%",
+    marginBottom: "5rem"
+  })}
   h3 {
     font-weight: 600;
     font-size: 2.5rem;
@@ -358,6 +395,12 @@ const ImageContainer = styled.div`
 const CertificateImg = styled.img`
   width: 50rem;
   object-fit: contain;
+  ${tab({
+    width: "40rem"
+  })}
+  ${mobile({
+    width: "35rem"
+  })}
 `;
 
 const ReadyToInvest = styled.div`

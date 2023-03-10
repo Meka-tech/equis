@@ -4,10 +4,11 @@ import { DashboardSidebar, PrimaryButton } from "../../../components";
 import { Body, Container } from "../style";
 import { ReactComponent as ErrorIcon } from "../../../images/svg/error.svg";
 import { ReactComponent as SuccessIcon } from "../../../images/icons/successIcon.svg";
+import { tab } from "../../../utilities/responsive";
 
 export const DashboardWithdraw = () => {
   const [error, setError] = useState(false);
-  const [success, setSucess] = useState(true);
+  const [success, setSucess] = useState(false);
   return (
     <Container>
       <DashboardSidebar activeNav="Withdraw" />
@@ -70,6 +71,9 @@ const Box = styled.div`
   font-family: "poppins", sans-serif;
   padding: 5rem 10rem;
   margin-top: 5rem;
+  ${tab({
+    padding: "5rem 3rem"
+  })}
 `;
 
 const Detail = styled.div`
@@ -80,14 +84,22 @@ const Detail = styled.div`
   font-family: "poppins", sans-serif;
   min-height: 4rem;
   display: flex;
+  align-items: flex-end;
   h2 {
     font-size: 1.6rem;
     font-weight: 500;
     margin-right: 4rem;
+    ${tab({
+      marginRight: "2rem",
+      fontSize: "1.2rem"
+    })}
   }
   h3 {
     font-size: 1.6rem;
     font-weight: 500;
+    ${tab({
+      fontSize: "1.2rem"
+    })}
   }
 `;
 const Input = styled.input`
@@ -102,9 +114,13 @@ const Input = styled.input`
   font-family: "poppins", sans-serif;
   font-weight: 500;
   margin-bottom: 0.5rem;
+
   ::placeholder {
     color: rgb(0, 0, 0);
   }
+  ${tab({
+    width: "15rem"
+  })}
 `;
 const Error = styled.div`
   display: flex;

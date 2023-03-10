@@ -149,9 +149,9 @@ export const Home = () => {
             <Zig alt="zig" src={ZigZag} />
           </AboutImage>
         </AboutDiv>
-        {/* <ReadyToInvest>
+        <ReadyToInvest>
           <ReadyBtn size={9} to="/current-opportunities-real-estate" />
-        </ReadyToInvest> */}
+        </ReadyToInvest>
         <MailList>
           <InputDiv>
             <InputDivTitle>
@@ -264,6 +264,9 @@ const Heading = styled.h1`
   ${tab({
     fontSize: "2.5rem"
   })}
+  ${mobile({
+    fontSize: "2.5rem"
+  })}
 `;
 
 const SubHeading = styled.h2`
@@ -271,6 +274,9 @@ const SubHeading = styled.h2`
   font-size: 2rem;
   margin-bottom: 5%;
   ${tab({
+    fontSize: "1.8rem"
+  })}
+  ${mobile({
     fontSize: "1.8rem"
   })}
 `;
@@ -281,7 +287,12 @@ const Buttons = styled.div`
   max-width: 50rem;
   margin: 0 auto;
   margin-bottom: 10%;
-
+  ${tab({
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: "10rem"
+  })}
   ${mobile({
     flexDirection: "column",
     alignItems: "center",
@@ -308,6 +319,9 @@ const Body = styled.div`
   ${tab({
     padding: "1rem 5rem"
   })}
+  ${mobile({
+    padding: "1rem 5rem"
+  })}
 `;
 
 const OwnParts = styled.div`
@@ -329,6 +343,9 @@ const OwnParts = styled.div`
     width: 70%;
     line-height: 4rem;
     ${tab({
+      width: "100%"
+    })}
+    ${mobile({
       width: "100%"
     })}
   }
@@ -371,6 +388,9 @@ const WhyTexts = styled.div`
     ${tab({
       width: "100%"
     })}
+    ${mobile({
+      width: "100%"
+    })}
   }
 `;
 const Cards = styled.div`
@@ -386,6 +406,10 @@ const Cards = styled.div`
     display: "flex",
     flexDirection: "column"
   })}
+  ${mobile({
+    display: "flex",
+    flexDirection: "column"
+  })}
 `;
 const BlueShadow = styled.img`
   left: 50%;
@@ -398,6 +422,9 @@ const BlueShadow = styled.img`
   position: absolute;
   z-index: -1;
   ${tab({
+    display: "none"
+  })}
+  ${mobile({
     display: "none"
   })}
 `;
@@ -434,6 +461,9 @@ const AboutTitle = styled.div`
   ${mobile({
     marginBottom: "5rem"
   })}
+  ${tab({
+    marginBottom: "5rem"
+  })}
 `;
 const AboutTexts = styled.div`
   h3 {
@@ -443,6 +473,9 @@ const AboutTexts = styled.div`
     font-family: "poppins";
     margin-left: 2rem;
     ${mobile({
+      textAlign: "center"
+    })}
+    ${tab({
       textAlign: "center"
     })}
   }
@@ -456,6 +489,10 @@ const AboutTexts = styled.div`
       textAlign: "center",
       margin: "0 auto"
     })}
+    ${tab({
+      textAlign: "center",
+      margin: "0 auto"
+    })}
   }
 `;
 
@@ -463,13 +500,21 @@ const AboutImage = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  ${tab({
+    marginTop: "6rem",
+    justifyContent: "center"
+  })}
   ${mobile({
     marginTop: "3rem",
     justifyContent: "center"
   })}
+
   img {
     width: 45rem;
     object-fit: cover;
+    ${tab({
+      width: "45rem"
+    })}
     ${mobile({
       width: "35rem"
     })}
@@ -502,6 +547,11 @@ const MailList = styled.div`
     justifyContent: "center",
     alignItems: "center"
   })}
+  ${tab({
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  })}
 `;
 
 const InputDiv = styled.div`
@@ -513,10 +563,20 @@ const InputDiv = styled.div`
     justifyContent: "center",
     flexDirection: "column"
   })}
+  ${tab({
+    margin: "0 auto",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column"
+  })}
 `;
 const InputDivInner = styled.div`
   width: 60%;
   ${mobile({
+    width: "100%"
+  })}
+  ${tab({
     width: "100%"
   })}
 `;
@@ -565,11 +625,18 @@ const BookDiv = styled.div`
     width: 45rem;
     object-fit: cover;
     margin-bottom: 2rem;
+    ${tab({
+      width: "45rem"
+    })}
     ${mobile({
       width: "35rem"
     })}
   }
   ${mobile({
+    margin: "0 auto",
+    marginTop: "10rem"
+  })}
+  ${tab({
     margin: "0 auto",
     marginTop: "10rem"
   })}
@@ -589,6 +656,11 @@ const Lists = styled.div`
     margin-bottom: 0.8rem;
   }
   ${mobile({
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  })}
+  ${tab({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"

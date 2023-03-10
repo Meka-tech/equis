@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { DashboardSidebar, PrimaryButton } from "../../../components";
+import { tab } from "../../../utilities/responsive";
 import { Body, Container } from "../style";
 import { InputElement } from "./input";
 
@@ -35,10 +36,14 @@ const Inputs = styled.div`
   margin-top: 8rem;
   display: grid;
   grid-template-columns: 40% 40%;
-  align-items: center;
+
   justify-content: space-between;
   grid-row-gap: 3rem;
   margin-bottom: 5rem;
+  ${tab({
+    display: "flex",
+    flexDirection: "column"
+  })}
 `;
 const Referral = styled.div`
   position: absolute;

@@ -1,9 +1,11 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useIsMobile } from "../../hooks/useIsMobile";
+import { useIsMobile, useIsTab } from "../../hooks/useIsMobile";
 import { ReactComponent as ButtonSVG } from "../../images/ReadyBtn.svg";
-import { mobile } from "../../utilities/responsive";
+import { ReactComponent as ButtonSVGmini } from "../../images/ReadyBtnMini.svg";
+import { ReactComponent as ButtonSVGtab } from "../../images/ReadyBtnTab.svg";
+import { mobile, tab } from "../../utilities/responsive";
 import { PrimaryButton } from "../button";
 
 interface IProps {
@@ -12,21 +14,39 @@ interface IProps {
   buttonText?: string;
 }
 export const ReadyBtn: FC<IProps> = ({ size = 8, to = "", buttonText }) => {
-  const IsMobile = useIsMobile();
+  const IsTab = useIsTab();
   return (
     <Container to={to}>
       <Button>
-        <ButtonSVG width={IsMobile ? `${size * 5}rem` : `${size * 10}rem`} />
+        <Svg>
+          <ButtonSVG width={`${size * 10}rem`} />
+        </Svg>
+        <SvgMini>
+          <ButtonSVGmini />
+        </SvgMini>
+        <SvgTab>
+          <ButtonSVGtab />
+        </SvgTab>
         <TextBox>
           <Header size={size}>Ready to invest?</Header>
           <PrimaryButton
             width="100%"
-            fontSize={IsMobile ? (size / 5) * 1.6 : (size / 10) * 1.6}
+            fontSize={(size / 10) * 1.6}
             variant="white"
             text={buttonText ? buttonText : "View Current Opportunities"}
             to={to}
           />
         </TextBox>
+        <MobileTextBox>
+          <Header size={size}>Ready to invest?</Header>
+          <PrimaryButton
+            width="100%"
+            fontSize={1}
+            variant="white"
+            text={buttonText ? buttonText : "View Current Opportunities"}
+            to={to}
+          />
+        </MobileTextBox>
       </Button>
     </Container>
   );
@@ -61,11 +81,59 @@ const TextBox = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: block;
+  ${mobile({
+    display: "none"
+  })}
+  ${tab({
+    display: "none"
+  })}
 `;
 
+const MobileTextBox = styled(TextBox)`
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  top: 38%;
+  ${mobile({
+    display: "flex"
+  })};
+  ${tab({
+    display: "flex"
+  })};
+`;
 interface Itext {
   size: number;
 }
+
+const Svg = styled.div`
+  display: flex;
+  ${tab({
+    display: "none"
+  })}
+  ${mobile({
+    display: "none"
+  })}
+`;
+
+const SvgMini = styled.div`
+  display: none;
+  ${tab({
+    display: "none"
+  })}
+  ${mobile({
+    display: "flex"
+  })}
+`;
+const SvgTab = styled.div`
+  display: none;
+  ${tab({
+    display: "flex"
+  })}
+  ${mobile({
+    display: "none"
+  })}
+`;
 
 const Header = styled.h2<Itext>`
   color: white;
@@ -75,7 +143,12 @@ rem`};
   font-family: "Poppins", sans-serif;
   margin-bottom: 2rem;
   ${mobile({
-    fontSize: "8px"
+    fontSize: "1.4rem",
+    marginBottom: "0.5rem"
+  })}
+  ${tab({
+    fontSize: "1.4rem",
+    marginBottom: "0.5rem"
   })}
 `;
 export * from "./investBtn";

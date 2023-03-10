@@ -7,7 +7,7 @@ import HouseImage from "../../images/img/house.png";
 
 import { AiOutlineArrowDown } from "react-icons/ai";
 
-import { tab } from "../../utilities/responsive";
+import { mobile, tab } from "../../utilities/responsive";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const InvestRealEstate = () => {
@@ -73,8 +73,7 @@ export const InvestRealEstate = () => {
   );
 };
 
-const Container = styled.div`
-`;
+const Container = styled.div``;
 
 interface IHeader {
   img: string;
@@ -91,6 +90,9 @@ const Header = styled.div<IHeader>`
   /* background-attachment: fixed; */
   background-position: center;
   position: relative;
+  ${mobile({
+    height: "70vh"
+  })}
 `;
 
 const TextBox = styled.div`
@@ -101,12 +103,21 @@ const TextBox = styled.div`
   text-align: center;
   font-family: "poppins";
   color: white;
+  ${mobile({
+    width: "100%"
+  })}
+  ${tab({
+    width: "100%"
+  })}
 `;
 
 const Heading = styled.h1`
   font-size: 4rem;
   margin-bottom: 2%;
   ${tab({
+    fontSize: "2.5rem"
+  })}
+  ${mobile({
     fontSize: "2.5rem"
   })}
 `;
@@ -118,6 +129,9 @@ const SubHeading = styled.h2`
   ${tab({
     fontSize: "1.8rem"
   })}
+  ${mobile({
+    fontSize: "1.8rem"
+  })}
 `;
 const Buttons = styled.div`
   display: flex;
@@ -127,7 +141,16 @@ const Buttons = styled.div`
   margin: 0 auto;
   margin-bottom: 10%;
   ${tab({
-    width: "80rem"
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: "10rem"
+  })}
+  ${mobile({
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: "10rem"
   })}
 `;
 const Scroll = styled.div`
@@ -149,6 +172,9 @@ const Body = styled.div`
   ${tab({
     padding: "1rem 5rem"
   })}
+  ${mobile({
+    padding: "1rem 5rem"
+  })}
 `;
 
 const Investment = styled.div`
@@ -164,6 +190,12 @@ const InvestHeading = styled.h2`
   font-family: "poppins", sans-serif;
   margin: 0 auto;
   width: 80%;
+  ${tab({
+    width: "100%"
+  })}
+  ${mobile({
+    width: "100%"
+  })}
 `;
 const Price = styled.span`
   color: rgba(0, 147, 255, 1);
@@ -179,6 +211,14 @@ const ImageContainer = styled.div`
     object-fit: cover;
     width: 60rem;
     margin-bottom: 2rem;
+    ${tab({
+      width: "45rem",
+      margin: "5rem auto"
+    })}
+    ${mobile({
+      width: "30rem",
+      margin: "5rem auto"
+    })}
   }
 `;
 const Description = styled.h3`
@@ -190,8 +230,20 @@ const Description = styled.h3`
   font-size: 2rem;
   color: rgba(48, 58, 66, 1);
   line-height: 4rem;
+  ${tab({
+    width: "100%"
+  })}
+  ${mobile({
+    width: "100%"
+  })}
 `;
 const Button = styled.div`
   margin: 0 auto;
   width: fit-content;
+  ${tab({
+    width: "100%"
+  })}
+  ${mobile({
+    width: "100%"
+  })}
 `;

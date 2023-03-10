@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { ReactComponent as ErrorIcon } from "../../images/svg/error.svg";
+import { mobile, tab } from "../../utilities/responsive";
 
 interface IProps {
   width?: string;
@@ -43,6 +44,12 @@ const Input = styled.input<IInput>`
 const ErrorDiv = styled.div`
   position: absolute;
   bottom: -2.5rem;
+  ${tab({
+    bottom: "-3rem"
+  })}
+  ${mobile({
+    bottom: "-3rem"
+  })}
   h3 {
     font-size: 1.2rem;
     margin-left: 0.5rem;

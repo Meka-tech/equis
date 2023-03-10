@@ -28,3 +28,24 @@ export const useIsMobile = () => {
     return false;
   }
 };
+
+export const useIsTab = () => {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (windowDimensions.width <= 770 && windowDimensions.width >= 450) {
+    return true;
+  } else {
+    return false;
+  }
+};

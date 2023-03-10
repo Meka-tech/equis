@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PrimaryButton } from "../../components";
 import HouseImage from "../../images/img/house.png";
+import { mobile, tab } from "../../utilities/responsive";
 
 interface IProps {
   title: string;
@@ -60,6 +61,12 @@ const Container = styled.div`
   justify-content: space-between;
   margin-bottom: 10rem;
   font-family: "poppins", sans-serif;
+  ${tab({
+    flexDirection: "column"
+  })}
+  ${mobile({
+    flexDirection: "column"
+  })}
 `;
 
 const TextDiv = styled.div`
@@ -108,7 +115,14 @@ const Description = styled.h3`
   font-weight: 400;
   font-size: 2rem;
 `;
-const Button = styled.div``;
+const Button = styled.div`
+  ${tab({
+    marginBottom: "5rem"
+  })}
+  ${mobile({
+    marginBottom: "5rem"
+  })}
+`;
 const ImageDiv = styled.div`
   flex: 1;
   display: flex;

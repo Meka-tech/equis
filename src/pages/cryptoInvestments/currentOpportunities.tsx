@@ -4,7 +4,7 @@ import { Footer, Navbar, PrimaryButton } from "../../components";
 import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 import CryptoHero from "../../images/img/cryptoHero.png";
 import WaveHeader from "../../images/img/waveHeader.png";
-import { tab } from "../../utilities/responsive";
+import { mobile, tab } from "../../utilities/responsive";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { Opportunity } from "./opportunity";
 
@@ -100,6 +100,9 @@ const Header = styled.div<IHeader>`
   /* background-attachment: fixed; */
   background-position: center;
   position: relative;
+  ${mobile({
+    height: "70vh"
+  })}
 `;
 
 const TextBox = styled.div`
@@ -110,12 +113,21 @@ const TextBox = styled.div`
   text-align: center;
   font-family: "poppins";
   color: white;
+  ${mobile({
+    width: "100%"
+  })}
+  ${tab({
+    width: "100%"
+  })}
 `;
 
 const Heading = styled.h1`
   font-size: 4rem;
   margin-bottom: 2%;
   ${tab({
+    fontSize: "2.5rem"
+  })}
+  ${mobile({
     fontSize: "2.5rem"
   })}
 `;
@@ -127,6 +139,9 @@ const SubHeading = styled.h2`
   ${tab({
     fontSize: "1.8rem"
   })}
+  ${mobile({
+    fontSize: "1.8rem"
+  })}
 `;
 const Buttons = styled.div`
   display: flex;
@@ -136,7 +151,16 @@ const Buttons = styled.div`
   margin: 0 auto;
   margin-bottom: 10%;
   ${tab({
-    width: "80rem"
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: "10rem"
+  })}
+  ${mobile({
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: "10rem"
   })}
 `;
 const Scroll = styled.div`
@@ -170,11 +194,20 @@ const HeadingImage = styled.div<IHeader>`
     font-size: 4.2vw;
     line-height: 4rem;
     margin-bottom: 5rem;
+    ${tab({
+      fontSize: "3rem"
+    })}
+    ${mobile({
+      fontSize: "2.5rem"
+    })}
   }
 `;
 const Body = styled.div`
   padding: 10rem;
   ${tab({
+    padding: "1rem 5rem"
+  })}
+  ${mobile({
     padding: "1rem 5rem"
   })}
 `;
