@@ -6,7 +6,7 @@ import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 
 import { AiOutlineArrowDown } from "react-icons/ai";
 
-import { tab } from "../../utilities/responsive";
+import { tab, mobile } from "../../utilities/responsive";
 import { InputElement } from "./input";
 
 export const Login = () => {
@@ -38,9 +38,7 @@ export const Login = () => {
   );
 };
 
-const Container = styled.div`
-  max-width: 100vw;
-`;
+const Container = styled.div``;
 
 interface IHeader {
   img: string;
@@ -57,6 +55,9 @@ const Header = styled.div<IHeader>`
   /* background-attachment: fixed; */
   background-position: center;
   position: relative;
+  ${mobile({
+    height: "60vh"
+  })}
 `;
 
 const TextBox = styled.div`
@@ -112,20 +113,8 @@ const InputSection = styled.div`
   grid-template-columns: 40% 40%;
   grid-row-gap: 5rem;
   margin-bottom: 5rem;
-`;
-interface IInput {
-  width?: string;
-}
-const Input = styled.input<IInput>`
-  outline: none;
-  border: none;
-  background-color: rgba(0, 147, 255, 0.1);
-  padding: 2rem;
-  font-family: "poppins";
-  width: ${(props) => (props.width ? props.width : "100%")};
-  color: black;
-  font-size: 1.4rem;
-  ::placeholder {
-    color: rgba(8, 8, 8, 0.5);
-  }
+  ${mobile({
+    display: "flex",
+    flexDirection: "column"
+  })}
 `;

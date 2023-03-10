@@ -18,3 +18,15 @@ body {
 code {
   font-family: "Inter", sans-serif;
 }
+
+@media only screen and (max-width: 600px) {
+  /*Big smartphones [426px -> 600px]*/
+  html {
+    font-size: 55%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  html {
+    font-size: 50%;
+  }
+}

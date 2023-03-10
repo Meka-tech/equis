@@ -23,7 +23,10 @@ export const CryptoInvestment = () => {
           </Heading>
           <SubHeading>We understand value and deliver results</SubHeading>
           <Buttons>
-            <PrimaryButton text="Current Opportunities" to="/current-opportunities-crypto-investment"/>
+            <PrimaryButton
+              text="Current Opportunities"
+              to="/current-opportunities-crypto-investment"
+            />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
@@ -94,9 +97,7 @@ export const CryptoInvestment = () => {
   );
 };
 
-const Container = styled.div`
-  max-width: 100vw;
-`;
+const Container = styled.div``;
 
 interface IHeader {
   img: string;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Footer, Navbar } from "../../components";
+import { mobile } from "../../utilities/responsive";
 
 export const TermsConditions = () => {
   return (
@@ -96,6 +97,9 @@ const Body = styled.div`
   margin: 0 auto;
   font-family: "poppins";
   margin-bottom: 10rem;
+  ${mobile({
+    padding: "3rem"
+  })}
   h1 {
     color: rgba(48, 58, 66, 1);
     font-weight: 700;
@@ -107,6 +111,9 @@ const Body = styled.div`
     margin: 3rem 0;
     margin-left: 5rem;
     font-size: 2rem;
+    ${mobile({
+      marginLeft: "3rem"
+    })}
   }
   p {
     font-family: "Inter", sans-serif;
@@ -115,5 +122,8 @@ const Body = styled.div`
     font-weight: 400;
     margin-left: 5rem;
     font-size: 1.6rem;
+    ${mobile({
+      marginLeft: "3rem"
+    })}
   }
 `;

@@ -23,7 +23,7 @@ import Book from "../../images/img/book.png";
 import ZigZag from "../../images/svg/zigZag.svg";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import BlueShade from "../../images/img/blueShadow.png";
-import { tab } from "../../utilities/responsive";
+import { mobile, tab } from "../../utilities/responsive";
 
 export const Home = () => {
   return (
@@ -149,9 +149,9 @@ export const Home = () => {
             <Zig alt="zig" src={ZigZag} />
           </AboutImage>
         </AboutDiv>
-        <ReadyToInvest>
+        {/* <ReadyToInvest>
           <ReadyBtn size={9} to="/current-opportunities-real-estate" />
-        </ReadyToInvest>
+        </ReadyToInvest> */}
         <MailList>
           <InputDiv>
             <InputDivTitle>
@@ -219,15 +219,14 @@ export const Home = () => {
   );
 };
 
-const Container = styled.div`
-  max-width: 100vw;
-`;
+const Container = styled.div``;
 
 interface IHeader {
   img: string;
 }
 const Header = styled.div<IHeader>`
   height: 90vh;
+  width: 100%;
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.4),
@@ -238,6 +237,9 @@ const Header = styled.div<IHeader>`
   /* background-attachment: fixed; */
   background-position: center;
   position: relative;
+  ${mobile({
+    height: "70vh"
+  })}
 `;
 
 const TextBox = styled.div`
@@ -248,6 +250,12 @@ const TextBox = styled.div`
   text-align: center;
   font-family: "poppins";
   color: white;
+  ${mobile({
+    width: "100%"
+  })}
+  ${tab({
+    width: "100%"
+  })}
 `;
 
 const Heading = styled.h1`
@@ -273,8 +281,12 @@ const Buttons = styled.div`
   max-width: 50rem;
   margin: 0 auto;
   margin-bottom: 10%;
-  ${tab({
-    width: "80rem"
+
+  ${mobile({
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: "10rem"
   })}
 `;
 const Scroll = styled.div`
@@ -398,7 +410,12 @@ const AboutDiv = styled.div`
   align-items: center;
   margin: 0 auto;
   ${tab({
-    flexDirection: "column"
+    flexDirection: "column",
+    marginTop: "20rem"
+  })}
+  ${mobile({
+    flexDirection: "column",
+    marginTop: "20rem"
   })}
 `;
 
@@ -414,6 +431,9 @@ const AboutTitle = styled.div`
     margin: 0 0.5rem;
     font-family: "poppins";
   }
+  ${mobile({
+    marginBottom: "5rem"
+  })}
 `;
 const AboutTexts = styled.div`
   h3 {
@@ -422,6 +442,9 @@ const AboutTexts = styled.div`
     margin-bottom: 1rem;
     font-family: "poppins";
     margin-left: 2rem;
+    ${mobile({
+      textAlign: "center"
+    })}
   }
   h4 {
     color: rgba(48, 58, 66, 0.8);
@@ -429,6 +452,10 @@ const AboutTexts = styled.div`
     font-weight: 400;
     width: 80%;
     margin-bottom: 4rem;
+    ${mobile({
+      textAlign: "center",
+      margin: "0 auto"
+    })}
   }
 `;
 
@@ -436,9 +463,16 @@ const AboutImage = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  ${mobile({
+    marginTop: "3rem",
+    justifyContent: "center"
+  })}
   img {
     width: 45rem;
     object-fit: cover;
+    ${mobile({
+      width: "35rem"
+    })}
   }
 `;
 
@@ -463,13 +497,28 @@ const MailList = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 15rem;
+  ${mobile({
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  })}
 `;
 
 const InputDiv = styled.div`
   flex: 1;
+  ${mobile({
+    margin: "0 auto",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column"
+  })}
 `;
 const InputDivInner = styled.div`
   width: 60%;
+  ${mobile({
+    width: "100%"
+  })}
 `;
 const InputDivTitle = styled.h2`
   font-weight: 700;
@@ -516,7 +565,14 @@ const BookDiv = styled.div`
     width: 45rem;
     object-fit: cover;
     margin-bottom: 2rem;
+    ${mobile({
+      width: "35rem"
+    })}
   }
+  ${mobile({
+    margin: "0 auto",
+    marginTop: "10rem"
+  })}
 `;
 
 const Lists = styled.div`
@@ -532,6 +588,11 @@ const Lists = styled.div`
     font-weight: 400;
     margin-bottom: 0.8rem;
   }
+  ${mobile({
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  })}
 `;
 
 interface IInput {

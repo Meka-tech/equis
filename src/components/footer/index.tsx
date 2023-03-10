@@ -5,7 +5,7 @@ import { ReactComponent as Phone } from "../../images/icons/phone.svg";
 import { ReactComponent as Mail } from "../../images/icons/mail.svg";
 import { ReactComponent as Location } from "../../images/icons/location.svg";
 import { Link } from "react-router-dom";
-import { tab } from "../../utilities/responsive";
+import { mobile, tab } from "../../utilities/responsive";
 
 export const Footer: FC = ({}) => {
   return (
@@ -57,8 +57,10 @@ const Container = styled.div`
   background-color: rgba(22, 27, 31, 1);
   font-family: "Poppins", sans-serif;
   color: white;
+  ${mobile({
+    height: "fit-content"
+  })}
   ${tab({
-    boxSizing: "content-box",
     height: "fit-content"
   })}
 `;
@@ -66,18 +68,24 @@ const Inner = styled.div`
   margin: 0 auto;
   width: 100%;
   height: 90%;
-  max-width: 150rem;
   display: grid;
   grid-template-columns: 30% 30% 40%;
   justify-content: space-between;
   padding: 0rem 8rem;
   padding-top: 3rem;
+  ${mobile({
+    display: "block",
+    padding: "0 2rem"
+  })}
   ${tab({
     display: "block",
     padding: "0 2rem"
   })}
 `;
 const Column = styled.div`
+  ${mobile({
+    marginBottom: "3rem"
+  })}
   ${tab({
     marginBottom: "3rem"
   })}

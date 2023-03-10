@@ -4,6 +4,7 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 import { useIsMobile } from "../../hooks/useIsMobile";
 import useClickOutside from "../../hooks/useClickOutside";
+import { mobile, tab } from "../../utilities/responsive";
 
 interface IProps {
   question: string;
@@ -56,6 +57,14 @@ const Container = styled.div`
   padding-bottom: 5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   font-family: "poppins";
+  ${mobile({
+    marginTop: "2rem",
+    paddingBottom: "2rem"
+  })}
+  ${tab({
+    marginTop: "3rem",
+    paddingBottom: "3rem"
+  })}
 `;
 interface OpenProps {
   open: boolean;
@@ -76,6 +85,12 @@ const Question = styled.div<OpenProps>`
     padding: 0;
     text-align: left;
     line-height: 29.69px;
+    ${mobile({
+      fontSize: "1.8rem"
+    })}
+    ${tab({
+      fontSize: "2rem"
+    })}
   }
 `;
 
@@ -92,6 +107,12 @@ const Answer = styled.div<OpenProps>`
   transition: all 0.15s ease-in-out;
   margin-top: 3rem;
   color: rgba(48, 58, 66, 1);
+  ${mobile({
+    marginTop: "1rem"
+  })}
+  ${tab({
+    marginTop: "2rem"
+  })}
   h1 {
     color: rgba(75, 81, 93, 1);
     font-weight: 400;
@@ -101,5 +122,11 @@ const Answer = styled.div<OpenProps>`
     text-align: left;
     width: 85%;
     line-height: 4rem;
+    ${mobile({
+      fontSize: "1.5rem"
+    })}
+    ${tab({
+      fontSize: "1.6rem"
+    })}
   }
 `;

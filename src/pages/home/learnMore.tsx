@@ -153,9 +153,7 @@ export const LearnMoreRealState = () => {
   );
 };
 
-const Container = styled.div`
-  max-width: 100vw;
-`;
+const Container = styled.div``;
 
 interface IHeader {
   img: string;

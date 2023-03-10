@@ -15,24 +15,3 @@ export const tab = (props) => {
     }
   `;
 };
-export const laptop3 = (props) => {
-  return css`
-    @media only screen and (max-width: 1280px) {
-      ${props}
-    }
-  `;
-};
-export const laptop2 = (props) => {
-  return css`
-    @media only screen and (max-width: 1536px) {
-      ${props}
-    }
-  `;
-};
-export const laptop1 = (props) => {
-  return css`
-    @media only screen and (max-width: 1678px) {
-      ${props}
-    }
-  `;
-};

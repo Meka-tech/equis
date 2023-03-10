@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FAQElement, Footer, Navbar, ReadyBtn } from "../../components";
+import { mobile, tab } from "../../utilities/responsive";
 
 export const FAQs = () => {
   return (
@@ -47,12 +48,16 @@ export const FAQs = () => {
   );
 };
 
-const Container = styled.div`
-  max-width: 100vw;
-`;
+const Container = styled.div``;
 
 const Body = styled.div`
   padding: 1rem 10rem;
+  ${mobile({
+    padding: "1rem 2rem"
+  })}
+  ${tab({
+    padding: "1rem 5rem"
+  })}
 `;
 
 const Header = styled.h1`

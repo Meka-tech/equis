@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useIsMobile } from "../../hooks/useIsMobile";
 import { ReactComponent as ButtonSVG } from "../../images/ReadyBtn.svg";
+import { mobile } from "../../utilities/responsive";
 import { PrimaryButton } from "../button";
 
 interface IProps {
@@ -9,16 +11,17 @@ interface IProps {
   to?: string;
   buttonText?: string;
 }
-export const ReadyBtn: FC<IProps> = ({ size = 10, to = "", buttonText }) => {
+export const ReadyBtn: FC<IProps> = ({ size = 8, to = "", buttonText }) => {
+  const IsMobile = useIsMobile();
   return (
     <Container to={to}>
       <Button>
-        <ButtonSVG width={`${size * 10}rem`} />
+        <ButtonSVG width={IsMobile ? `${size * 5}rem` : `${size * 10}rem`} />
         <TextBox>
           <Header size={size}>Ready to invest?</Header>
           <PrimaryButton
             width="100%"
-            fontSize={(size / 10) * 1.6}
+            fontSize={IsMobile ? (size / 5) * 1.6 : (size / 10) * 1.6}
             variant="white"
             text={buttonText ? buttonText : "View Current Opportunities"}
             to={to}
@@ -57,7 +60,7 @@ const TextBox = styled.div`
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-40%, -50%);
+  transform: translate(-50%, -50%);
 `;
 
 interface Itext {
@@ -71,5 +74,8 @@ const Header = styled.h2<Itext>`
 rem`};
   font-family: "Poppins", sans-serif;
   margin-bottom: 2rem;
+  ${mobile({
+    fontSize: "8px"
+  })}
 `;
 export * from "./investBtn";

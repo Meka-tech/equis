@@ -159,7 +159,6 @@ export const AboutUs = () => {
 };
 
 const Container = styled.div`
-  max-width: 100vw;
 `;
 
 interface IHeader {
