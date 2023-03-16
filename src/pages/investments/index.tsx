@@ -22,14 +22,14 @@ export const Investments = () => {
           <CryptoOpportunity
             heading="EQUIS BRONZE"
             week="3.5"
-            duration="6 MONTHS"
+            duration="1 MONTH"
             min={"100"}
             max={"3,999"}
           />
           <CryptoOpportunity
             heading="EQUIS SILVER"
             week="3.9"
-            duration="6 MONTHS"
+            duration="2 MONTHS"
             min={"4,000"}
             max={"19,999"}
           />

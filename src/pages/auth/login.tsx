@@ -28,7 +28,7 @@ export const Login = () => {
           <InputElement placeholder="Username" />
           <InputElement
             placeholder="Password"
-            errorMsg="Invalid username or password"
+            // errorMsg="Invalid username or password"
           />
         </InputSection>
         <PrimaryButton text="Login" />

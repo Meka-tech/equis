@@ -128,6 +128,9 @@ const ImageDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
+  ${tab({
+    justifyContent: "center"
+  })}
   img {
     object-fit: cover;
     width: 40rem;
