@@ -1,7 +1,9 @@
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { mobile, tab } from "../../utilities/responsive";
+import { ReactComponent as Spinner } from "../../images/Spinner.svg";
+import "./Button.styles.css";
 interface IProps {
   fontSize?: number;
   variant?: string;
@@ -9,6 +11,7 @@ interface IProps {
   text?: string;
   to?: string;
   onClick?: () => void;
+  isLoading?: boolean;
 }
 
 export const PrimaryButton: FC<IProps> = ({
@@ -17,22 +20,24 @@ export const PrimaryButton: FC<IProps> = ({
   width,
   text,
   to = "",
-  onClick
+  onClick,
+  isLoading
 }) => {
+  const navigate = useNavigate();
   return (
     <Container
       fontSize={fontSize}
       variant={variant}
       width={width}
-      to={to}
       onClick={onClick}
     >
       {text}
+      {isLoading ? <Spinner className="loader-spin" /> : null}
     </Container>
   );
 };
 
-const Container = styled(Link)<IProps>`
+const Container = styled.div<IProps>`
   cursor: pointer;
   background-color: ${(props) => (props.variant ? "" : "rgba(0, 147, 255, 1)")};
   color: ${(props) =>

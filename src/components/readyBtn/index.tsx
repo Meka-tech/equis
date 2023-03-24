@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useIsMobile, useIsTab } from "../../hooks/useIsMobile";
 import { ReactComponent as ButtonSVG } from "../../images/ReadyBtn.svg";
@@ -14,9 +14,9 @@ interface IProps {
   buttonText?: string;
 }
 export const ReadyBtn: FC<IProps> = ({ size = 8, to = "", buttonText }) => {
-  const IsTab = useIsTab();
+  const navigate = useNavigate();
   return (
-    <Container to={to}>
+    <Container onClick={() => navigate(to)}>
       <Button>
         <Svg>
           <ButtonSVG width={`${size * 10}rem`} />
@@ -34,7 +34,7 @@ export const ReadyBtn: FC<IProps> = ({ size = 8, to = "", buttonText }) => {
             fontSize={(size / 10) * 1.6}
             variant="white"
             text={buttonText ? buttonText : "View Current Opportunities"}
-            to={to}
+            onClick={() => navigate(to)}
           />
         </TextBox>
         <MobileTextBox>
@@ -44,7 +44,7 @@ export const ReadyBtn: FC<IProps> = ({ size = 8, to = "", buttonText }) => {
             fontSize={1}
             variant="white"
             text={buttonText ? buttonText : "View Current Opportunities"}
-            to={to}
+            onClick={() => navigate(to)}
           />
         </MobileTextBox>
       </Button>
@@ -52,7 +52,7 @@ export const ReadyBtn: FC<IProps> = ({ size = 8, to = "", buttonText }) => {
   );
 };
 
-const Container = styled(Link)``;
+const Container = styled.div``;
 
 const Button = styled.div`
   position: relative;

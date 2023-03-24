@@ -1,10 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { DashboardSidebar, PrimaryButton } from "../../../components";
 import { tab } from "../../../utilities/responsive";
 import { Body, Container } from "../style";
 
 export const DashboardHome = () => {
+  const data: any = localStorage.getItem("userData");
+  const userData = JSON.parse(data);
+  const navigate = useNavigate();
   return (
     <Container>
       <DashboardSidebar />
@@ -19,28 +23,32 @@ export const DashboardHome = () => {
           <DepositRow>
             {" "}
             <h2>Total Deposit</h2>
-            <h3>$0.00</h3>
+            <h3>${userData.totaldepcrypto}</h3>
             <ColorBlue />
           </DepositRow>
           <DepositRow>
             {" "}
             <h2>Total Withdrawal</h2>
-            <h3>$0.00</h3>
+            <h3>${userData.totalwithdrawcrypto}</h3>
             <ColorPink />
           </DepositRow>
         </DepositDiv>
         <Details>
           <Detail>
-            <h2>Equis User:</h2>
+            <h2>Equis User: </h2>
+            <h2>{userData.name}</h2>
           </Detail>
           <Detail>
-            <h2>Account Balance:</h2>
+            <h2>Account Balance: </h2>
+            <h2>{userData.cryptobalance}$</h2>
           </Detail>
           <Detail>
-            <h2>Total Earnings:</h2>
+            <h2>Total Earnings: </h2>
+            <h2>{userData.cryptototalearn}$</h2>
           </Detail>
           <Detail>
-            <h2>Pending Withdrawal:</h2>
+            <h2>Pending Withdrawal: </h2>
+            <h2>{userData.cryptopendingwithdraw}$</h2>
           </Detail>
           <Detail>
             <h2>Investment Plan:</h2>
@@ -48,10 +56,13 @@ export const DashboardHome = () => {
           <Button>
             <PrimaryButton
               text="Invest"
-              to="/current-opportunities-crypto-investment"
+              onClick={() =>
+                navigate("/current-opportunities-crypto-investment")
+              }
             />
           </Button>
         </Details>
+        <Header>Real Estate Dashboard</Header>
         <DepositDiv>
           <DepositRow>
             <h2>Active Deposit</h2>
@@ -61,28 +72,32 @@ export const DashboardHome = () => {
           <DepositRow>
             {" "}
             <h2>Total Deposit</h2>
-            <h3>$0.00</h3>
+            <h3>${userData.totaldepestate}</h3>
             <ColorBlue />
           </DepositRow>
           <DepositRow>
             {" "}
             <h2>Total Withdrawal</h2>
-            <h3>$0.00</h3>
+            <h3>${userData.totalwithdrawestate}</h3>
             <ColorPink />
           </DepositRow>
         </DepositDiv>
         <Details>
           <Detail>
-            <h2>Equis User:</h2>
+            <h2>Equis User: </h2>
+            <h2>{userData.name}</h2>
           </Detail>
           <Detail>
-            <h2>Account Balance:</h2>
+            <h2>Account Balance: </h2>
+            <h2>{userData.estatebalance}$</h2>
           </Detail>
           <Detail>
-            <h2>Total Earnings:</h2>
+            <h2>Total Earnings: </h2>
+            <h2>{userData.estatetotalearn}$</h2>
           </Detail>
           <Detail>
-            <h2>Pending Withdrawal:</h2>
+            <h2>Pending Withdrawal: </h2>
+            <h2>{userData.estatependingwithdraw}$</h2>
           </Detail>
           <Detail>
             <h2>Investment Plan:</h2>
@@ -90,7 +105,7 @@ export const DashboardHome = () => {
           <Button>
             <PrimaryButton
               text="Invest"
-              to="/current-opportunities-real-estate"
+              onClick={() => navigate("/current-opportunities-real-estate")}
             />
           </Button>
         </Details>
@@ -186,6 +201,8 @@ const Detail = styled.div`
   h2 {
     font-size: 1.6rem;
     font-weight: 500;
+    display: inline;
+    text-transform: capitalize;
     ${tab({
       fontSize: "1.4rem"
     })};

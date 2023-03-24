@@ -7,8 +7,11 @@ import WaveHeader from "../../images/img/waveHeader.png";
 import { mobile, tab } from "../../utilities/responsive";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { Opportunity } from "./opportunity";
+import { useNavigate } from "react-router-dom";
 
 export const CurrentOpportunitiesCryptoInvestment = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Navbar activeNav="crypto investments" />
@@ -21,12 +24,14 @@ export const CurrentOpportunitiesCryptoInvestment = () => {
           <Buttons>
             <PrimaryButton
               text="Current Opportunities"
-              to="/current-opportunities-crypto-investment"
+              onClick={() =>
+                navigate("/current-opportunities-crypto-investment")
+              }
             />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
-              to="/learn-more-crypto-investment"
+              onClick={() => navigate("/learn-more-crypto-investment")}
             />
           </Buttons>
           <Scroll>
@@ -41,6 +46,13 @@ export const CurrentOpportunitiesCryptoInvestment = () => {
       </HeadingImage>
       <Body>
         <Opportunities>
+          <Opportunity
+            heading="EQUIS STARTER PLAN"
+            week="2.5"
+            duration="1 MONTH"
+            min={"25"}
+            max={"99"}
+          />
           <Opportunity
             heading="EQUIS BRONZE"
             week="3.5"

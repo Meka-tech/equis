@@ -11,6 +11,8 @@ export const DashboardDeposit = () => {
   const [success, setSucess] = useState(false);
   const location = useLocation();
   const { plan, profit, duration, investment } = location.state;
+  const data: any = localStorage.getItem("userData");
+  const userData = JSON.parse(data);
 
   return (
     <Container>

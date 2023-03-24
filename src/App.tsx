@@ -15,7 +15,8 @@ import {
   Login,
   RegisteredPage,
   SignUp,
-  TermsConditions
+  TermsConditions,
+  Verify
 } from "./pages";
 import {
   DashboardHome,
@@ -56,6 +57,7 @@ function App() {
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/terms&conditions" element={<TermsConditions />} />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/verify" element={<Verify />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registered" element={<RegisteredPage />} />
             <Route path="/dashboard-home" element={<DashboardHome />} />

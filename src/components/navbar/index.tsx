@@ -1,7 +1,7 @@
 import React, { FC, useState, useRef } from "react";
 import styled from "styled-components";
 import { ReactComponent as Logo } from "../../images/logo.svg";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { mobile, tab } from "../../utilities/responsive";
 import { ReactComponent as HamburgerMenu } from "../../images/svg/hamburger.svg";
 import useClickOutside from "../../hooks/useClickOutside";
@@ -15,6 +15,7 @@ interface IProps {
 
 export const Navbar: FC<IProps> = ({ activeNav = "home" }) => {
   const Ref = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const navigate = useNavigate();
 
   const NavDetails = [
     ["home", "/"],
@@ -31,17 +32,18 @@ export const Navbar: FC<IProps> = ({ activeNav = "home" }) => {
   ];
   const [active, setActive] = useState(false);
   useClickOutside(Ref, () => setActive(false));
+  const LoggedIn = localStorage.getItem("loggedIn");
   return (
     <Container>
       <Inner>
-        <LogoDiv to="/">
+        <LogoDiv onClick={() => navigate(`/`)}>
           <Logo fill="white" width={"5rem"} style={{ cursor: "pointer" }} />
           <h1>EQUIS</h1>
         </LogoDiv>
         <NavItems>
           {NavDetails.map((nav, index) => (
             <NavItem
-              to={`${nav[1]}`}
+              onClick={() => navigate(`${nav[1]}`)}
               key={index}
               active={activeNav === nav[0] ? "true" : "false"}
             >
@@ -50,10 +52,19 @@ export const Navbar: FC<IProps> = ({ activeNav = "home" }) => {
             </NavItem>
           ))}
         </NavItems>
-        <Buttons>
-          <LoginBtn to="/login">Log in</LoginBtn>
-          <SignUpBtn to="/sign-up">Register</SignUpBtn>
-        </Buttons>
+
+        {LoggedIn === "true" ? (
+          <Buttons>
+            <LoginBtn onClick={() => navigate("/dashboard-home")}>
+              Dashboard
+            </LoginBtn>
+          </Buttons>
+        ) : (
+          <Buttons>
+            <LoginBtn onClick={() => navigate("/login")}>Log in</LoginBtn>
+            <SignUpBtn onClick={() => navigate("/sign-up")}>Register</SignUpBtn>
+          </Buttons>
+        )}
         <HamburgerDiv onClick={() => setActive(true)}>
           <HamburgerMenu width={"3rem"} />
         </HamburgerDiv>
@@ -68,7 +79,7 @@ export const Navbar: FC<IProps> = ({ activeNav = "home" }) => {
           <MobileNavItems>
             {MobileNavDetails.map((nav, index) => (
               <MobileNavLink
-                to={`${nav[1]}`}
+                onClick={() => navigate(`${nav[1]}`)}
                 key={index}
                 active={activeNav === nav[0] ? "true" : "false"}
               >
@@ -105,7 +116,7 @@ const Inner = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-const LogoDiv = styled(Link)`
+const LogoDiv = styled.div`
   flex: 0.4;
   font-family: "Quattrocento Sans", sans-serif;
   text-transform: uppercase;
@@ -153,7 +164,7 @@ const NavItems = styled.div`
 interface INavItem {
   active?: string;
 }
-const NavItem = styled(Link)<INavItem>`
+const NavItem = styled.div<INavItem>`
   cursor: pointer;
   position: relative;
   text-decoration: none;
@@ -184,7 +195,7 @@ const Buttons = styled.div`
   })}
 `;
 
-const LoginBtn = styled(Link)`
+const LoginBtn = styled.div`
   color: rgba(0, 147, 255, 1);
   border: 1px solid rgba(0, 147, 255, 1);
   padding: 0.5rem 2rem;
@@ -278,7 +289,7 @@ const MobileNavItems = styled.div`
   border-bottom: 0.2px solid white;
 `;
 
-const MobileNavLink = styled(Link)<INavItem>`
+const MobileNavLink = styled.div<INavItem>`
   width: 100%;
   text-decoration: none;
 `;

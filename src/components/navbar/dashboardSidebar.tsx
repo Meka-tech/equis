@@ -1,5 +1,5 @@
 import React, { FC, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as DashboardIcon } from "../../images/navItems/dashboardIcon.svg";
 import { ReactComponent as ProfileIcon } from "../../images/navItems/profileIcon.svg";
@@ -16,6 +16,7 @@ interface IProps {
 }
 
 export const DashboardSidebar: FC<IProps> = ({ activeNav = "Dashboard" }) => {
+  const navigate = useNavigate();
   const NavDetails = [
     [
       "Dashboard",
@@ -89,20 +90,23 @@ export const DashboardSidebar: FC<IProps> = ({ activeNav = "Dashboard" }) => {
   const Ref = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [active, setActive] = useState(false);
   useClickOutside(Ref, () => setActive(false));
+  const data: any = localStorage.getItem("userData");
+  const userData = JSON.parse(data);
+
   return (
     <Container>
       <LogoDiv>
         <ProfileLogo />
-        <h2>Lewin</h2>
+        <h2>{userData?.username}</h2>
       </LogoDiv>
-      <MobileLogoDiv to="/">
+      <MobileLogoDiv onClick={() => navigate("/")}>
         <Logo fill="white" width={"5rem"} style={{ cursor: "pointer" }} />
         <h1>EQUIS</h1>
       </MobileLogoDiv>
       <NavItems>
         {NavDetails.map((nav, index) => (
           <NavItem
-            to={`${nav[1]}`}
+            onClick={() => navigate(`${nav[1]}`)}
             key={index}
             active={activeNav === nav[0] ? "true" : "false"}
           >
@@ -121,12 +125,12 @@ export const DashboardSidebar: FC<IProps> = ({ activeNav = "Dashboard" }) => {
         </CloseSideBarDiv>
         <MobileProfileLogo>
           <ProfileLogo fill="white" width={"4rem"} />
-          <h2>Lewin</h2>
+          <h2>{userData?.username}</h2>
         </MobileProfileLogo>
         <MobileNavItems>
           {MobileNavDetails.map((nav, index) => (
             <MobileNavLink
-              to={`${nav[1]}`}
+              onClick={() => navigate(`${nav[1]}`)}
               key={index}
               active={activeNav === nav[0] ? "true" : "false"}
             >
@@ -169,12 +173,13 @@ const LogoDiv = styled.div`
     font-family: "poppins", sans-serif;
     font-weight: 500;
     font-size: 1.6rem;
+    text-transform: capitalize;
   }
   ${tab({
     display: "none"
   })}
 `;
-const MobileLogoDiv = styled(Link)`
+const MobileLogoDiv = styled.div`
   flex: 0.4;
   font-family: "Quattrocento Sans", sans-serif;
   text-transform: uppercase;
@@ -204,6 +209,7 @@ const MobileProfileLogo = styled.div`
     margin-left: 1rem;
     font-size: 2.5rem;
     font-weight: 400;
+    text-transform: capitalize;
   }
   margin-bottom: 8rem;
 `;
@@ -219,7 +225,7 @@ const NavItems = styled.div`
 interface INavItem {
   active?: string;
 }
-const NavItem = styled(Link)<INavItem>`
+const NavItem = styled.div<INavItem>`
   cursor: pointer;
   margin-bottom: 30%;
   display: flex;
@@ -262,6 +268,7 @@ const Shade = styled.div<openProps>`
   left: 0;
   transition: all 0.2s ease-in;
   z-index: 99;
+  display: none;
 `;
 
 const Sidebar = styled.div<openProps>`
@@ -301,7 +308,7 @@ const MobileNavItems = styled.div`
   border-bottom: 0.2px solid white;
 `;
 
-const MobileNavLink = styled(Link)<INavItem>`
+const MobileNavLink = styled.div<INavItem>`
   width: 100%;
   text-decoration: none;
 `;

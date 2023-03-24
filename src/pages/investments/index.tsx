@@ -8,8 +8,10 @@ import { RealEstateOpportunity } from "./realOpportunity";
 import HouseImage from "../../images/img/house_one.jpg";
 import HouseImageTwo from "../../images/img/house_two.png";
 import HouseImageThree from "../../images/img/house_three.png";
+import { useNavigate } from "react-router-dom";
 
 export const Investments = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Navbar />
@@ -19,6 +21,13 @@ export const Investments = () => {
       </HeadingImage>
       <Body>
         <Opportunities>
+          <CryptoOpportunity
+            heading="EQUIS STARTER PLAN"
+            week="2.5"
+            duration="1 MONTH"
+            min={"25"}
+            max={"99"}
+          />
           <CryptoOpportunity
             heading="EQUIS BRONZE"
             week="3.5"
@@ -59,7 +68,7 @@ export const Investments = () => {
           {" "}
           <PrimaryButton
             text="Learn More About Investing"
-            to="/learn-more-crypto-investment"
+            onClick={() => navigate("/learn-more-crypto-investment")}
             variant="blue"
           />
         </Button>
@@ -84,7 +93,7 @@ export const Investments = () => {
         <Button>
           <PrimaryButton
             text="Learn More About Investing"
-            to="/learn-more-real-estate"
+            onClick={() => navigate("/learn-more-real-estate")}
             variant="blue"
           />
         </Button>

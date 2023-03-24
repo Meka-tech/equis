@@ -24,8 +24,10 @@ import ZigZag from "../../images/svg/zigZag.svg";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import BlueShade from "../../images/img/blueShadow.png";
 import { mobile, tab } from "../../utilities/responsive";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Navbar />
@@ -39,12 +41,12 @@ export const Home = () => {
           <Buttons>
             <PrimaryButton
               text="Current Opportunities"
-              to="/current-opportunities-real-estate"
+              onClick={() => navigate("/current-opportunities-real-estate")}
             />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
-              to="/learn-more-real-estate"
+              onClick={() => navigate("/learn-more-real-estate")}
             />
           </Buttons>
           <Scroll>
@@ -117,12 +119,13 @@ export const Home = () => {
           <Buttons>
             <PrimaryButton
               text="Current Opportunities"
-              to="/current-opportunities-real-estate"
+              onClick={() => navigate("/current-opportunities-real-estate")}
             />
             <PrimaryButton
               text="Learn More About Investing"
               variant="blue"
-              to="/learn-more-real-estate"
+              onClick={() => navigate("/learn-more-real-estate")}
+              
             />
           </Buttons>
         </Why>

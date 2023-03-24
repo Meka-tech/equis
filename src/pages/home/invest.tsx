@@ -14,17 +14,21 @@ export const InvestRealEstate = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { title, description, image } = location.state;
+  const LoggedIn = localStorage.getItem("loggedIn");
   const Onclick = () => {
-    navigate("/dashboard-deposit", {
-      state: {
-        investment: "real-estate",
-        plan: title,
-        profit: 35,
-        duration: ""
-      }
-    });
+    if (LoggedIn === "true") {
+      navigate("/dashboard-deposit", {
+        state: {
+          investment: "real-estate",
+          plan: title,
+          profit: 35,
+          duration: ""
+        }
+      });
+    } else {
+      navigate("/login");
+    }
   };
-  // console.log(title);
 
   return (
     <Container>
@@ -39,12 +43,12 @@ export const InvestRealEstate = () => {
           <Buttons>
             <PrimaryButton
               text="Current Opportunities"
-              to="/current-opportunities-real-estate"
+              onClick={() => navigate("/current-opportunities-real-estate")}
             />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
-              to="/learn-more-real-estate"
+              onClick={() => navigate("/learn-more-real-estate")}
             />
           </Buttons>
           <Scroll>

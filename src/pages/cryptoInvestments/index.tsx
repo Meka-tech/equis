@@ -11,8 +11,10 @@ import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 import CryptoHero from "../../images/img/cryptoHero.png";
 import { mobile, tab } from "../../utilities/responsive";
 import { AiOutlineArrowDown } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 export const CryptoInvestment = () => {
+  const navigate = useNavigate()
   return (
     <Container>
       <Navbar activeNav="crypto investments" />
@@ -25,12 +27,14 @@ export const CryptoInvestment = () => {
           <Buttons>
             <PrimaryButton
               text="Current Opportunities"
-              to="/current-opportunities-crypto-investment"
+              onClick={() => navigate("/current-opportunities-crypto-investment")}
+         
             />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
-              to="/learn-more-crypto-investment"
+              onClick={() => navigate("/learn-more-crypto-investment")}
+
             />
           </Buttons>
           <Scroll>

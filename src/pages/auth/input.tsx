@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as ErrorIcon } from "../../images/svg/error.svg";
 import { mobile, tab } from "../../utilities/responsive";
 
-interface IProps {
+interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   width?: string;
   placeholder?: string;
   errorMsg?: string;
@@ -26,7 +26,7 @@ const Container = styled.div`
   font-family: "poppins", sans-serif;
 `;
 
-interface IInput {
+interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
   width?: string;
 }
 const Input = styled.input<IInput>`

@@ -10,24 +10,26 @@ import { tab, mobile } from "../../utilities/responsive";
 import { InputElement } from "./input";
 import axios from "axios";
 import { BaseUrl } from "../../utilities/API";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import { loginValidationSchema } from "./validationSchema";
+import { verifyValidationSchema } from "./validationSchema";
 
-export const Login = () => {
+export const Verify = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const { email } = location.state;
 
   const [isLoading, setIsLoading] = useState(false);
 
   const onhandleSubmit = async () => {
     setIsLoading(true);
     const data = new FormData();
-    data.append("password", `${values.password}`);
-    data.append("username", `${values.username}`);
+    data.append("email", `${email}`);
+    data.append("vkey", `${values.otp}`);
 
     const config = {
       method: "post",
-      url: `${BaseUrl}/investlogin.php`,
+      url: `${BaseUrl}/investverify.php`,
       headers: {},
       data: data
     };
@@ -35,35 +37,28 @@ export const Login = () => {
     axios(config)
       .then(function (res) {
         setIsLoading(false);
-        console.log(res.data[0]);
-        const userData = res.data[0];
-        localStorage.setItem("userData", JSON.stringify(userData));
-        localStorage.setItem("loggedIn", "true");
-        navigate("/dashboard-home");
+        navigate("/registered");
+        console.log(res);
       })
       .catch(function (error) {
         setIsLoading(false);
-        console.log(error);
       });
   };
 
   const { values, handleChange, handleSubmit, errors, touched } = useFormik({
     initialValues: {
-      password: "",
-      username: ""
+      otp: ""
     },
-    validationSchema: loginValidationSchema,
+    validationSchema: verifyValidationSchema,
     onSubmit: onhandleSubmit
   });
-  const data = localStorage.getItem("userData");
-  console.log(data);
 
   return (
     <Container>
       <Navbar />
       <Header img={HomeHero}>
         <TextBox>
-          <Heading>Login</Heading>
+          <Heading>Verify</Heading>
           <Scroll>
             <h3> Scroll Down</h3> <Mouse width={"2.5rem"} />
             <AiOutlineArrowDown size={30} style={{ marginTop: "1rem" }} />
@@ -71,24 +66,18 @@ export const Login = () => {
         </TextBox>
       </Header>
       <Body>
-        <Title>Login</Title>
+        <Title>Verify Email</Title>
+        <Subtitle>An OTP was sent to {email}</Subtitle>
         <InputSection>
           <InputElement
-            placeholder="Username"
-            value={values.username}
-            onChange={handleChange("username")}
-            errorMsg={touched.username ? errors.username : ""}
-          />
-          <InputElement
-            placeholder="Password"
-            value={values.password}
-            type="password"
-            onChange={handleChange("password")}
-            errorMsg={touched.password ? errors.password : ""}
+            placeholder="OTP"
+            value={values.otp}
+            onChange={handleChange("otp")}
+            errorMsg={touched.otp ? errors.otp : ""}
           />
         </InputSection>
         <PrimaryButton
-          text="Login"
+          text="Verify"
           onClick={handleSubmit}
           isLoading={isLoading}
         />
@@ -165,6 +154,12 @@ const Title = styled.h3`
   text-align: center;
   margin-bottom: 3rem;
   font-size: 3rem;
+`;
+const Subtitle = styled.h3`
+  margin-bottom: 5rem;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
 `;
 
 const InputSection = styled.div`

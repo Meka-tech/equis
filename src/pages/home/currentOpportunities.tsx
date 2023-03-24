@@ -11,8 +11,10 @@ import { Opportunity } from "./opportunity";
 import HouseImage from "../../images/img/house_one.jpg";
 import HouseImageTwo from "../../images/img/house_two.png";
 import HouseImageThree from "../../images/img/house_three.png";
+import { useNavigate } from "react-router-dom";
 
 export const CurrentOpportunitiesRealEstate = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Navbar />
@@ -26,12 +28,12 @@ export const CurrentOpportunitiesRealEstate = () => {
           <Buttons>
             <PrimaryButton
               text="Current Opportunities"
-              to="/current-opportunities-real-estate"
+              onClick={() => navigate("/current-opportunities-real-estate")}
             />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
-              to="/learn-more-real-estate"
+              onClick={() => navigate("/learn-more-real-estate")}
             />
           </Buttons>
           <Scroll>

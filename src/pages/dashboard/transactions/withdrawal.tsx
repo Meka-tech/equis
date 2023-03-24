@@ -1,24 +1,62 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { DashboardSidebar, PrimaryButton } from "../../../components";
 import { Body, Container } from "../style";
 import { ReactComponent as ErrorIcon } from "../../../images/svg/error.svg";
 import { ReactComponent as SuccessIcon } from "../../../images/icons/successIcon.svg";
 import { tab } from "../../../utilities/responsive";
+import { AiOutlineDown } from "react-icons/ai";
+import useClickOutside from "../../../hooks/useClickOutside";
 
 export const DashboardWithdraw = () => {
   const [error, setError] = useState(false);
   const [success, setSucess] = useState(false);
+  const [dropActive, setDropActive] = useState(false);
+  const [account, setAccount] = useState("trading");
+  const dropRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  useClickOutside(dropRef, () => setDropActive(false));
+  const data: any = localStorage.getItem("userData");
+  const userData = JSON.parse(data);
   return (
     <Container>
       <DashboardSidebar activeNav="Withdraw" />
       <Body>
-        <Header>Withdrawal Slip</Header>
+        <Header onClick={() => setDropActive(!dropActive)}>
+          <h1>Withdrawal Slip</h1>
+          <AiOutlineDown
+            style={{ transform: dropActive ? "rotate(180deg)" : "rotate(0)" }}
+          />
+        </Header>
+        {dropActive && (
+          <DropDown ref={dropRef}>
+            <h2
+              onClick={() => {
+                setAccount("trading");
+                setDropActive(false);
+              }}
+            >
+              Trading Account
+            </h2>
+            <h2
+              onClick={() => {
+                setAccount("real");
+                setDropActive(false);
+              }}
+            >
+              Real Estate Account
+            </h2>
+          </DropDown>
+        )}
         {!success ? (
           <Box>
             <Detail>
               <h2>Account balance:</h2>
-              <h3>$500</h3>
+              <h3>
+                $
+                {account === "trading"
+                  ? userData.cryptobalance
+                  : userData.estatebalance}
+              </h3>
             </Detail>
             <Detail>
               <h2>Pending withdrawal:</h2>
@@ -58,14 +96,41 @@ export const DashboardWithdraw = () => {
 const Header = styled.div`
   font-family: "poppins", sans-serif;
   display: inline;
-  font-size: 1.6rem;
-  font-weight: 500;
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-right: 1rem;
+  }
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: fit-content;
+  position: relative;
+`;
+const DropDown = styled.div`
+  border: 1px solid rgba(0, 147, 255, 1);
+  width: fit-content;
+  position: absolute;
+  margin-top: 0.4rem;
+  background-color: white;
+  h2 {
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    &:hover {
+      background-color: rgba(0, 147, 255, 1);
+      color: white;
+    }
+  }
 `;
 const Box = styled.div`
   width: 100%;
   height: 50rem;
   background-color: rgba(229, 244, 255, 1);
-  margin-top: 5rem;
+  margin-top: 7rem;
   max-width: 130rem;
   margin: 0 auto;
   font-family: "poppins", sans-serif;

@@ -12,6 +12,7 @@ interface IProps {
 }
 export const Opportunity: FC<IProps> = ({ title, description, image }) => {
   let navigate = useNavigate();
+
   const Onclick = () => {
     navigate("/invest-real-estate", {
       state: {

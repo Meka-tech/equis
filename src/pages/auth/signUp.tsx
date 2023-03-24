@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Footer, Navbar, PrimaryButton } from "../../components";
 import HomeHero from "../../images/img/homeHero.png";
@@ -8,8 +8,68 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 
 import { mobile, tab } from "../../utilities/responsive";
 import { InputElement } from "./input";
+import axios from "axios";
+import { BaseUrl } from "../../utilities/API";
+import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import { signUpvalidationSchema } from "./validationSchema";
 
 export const SignUp = () => {
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onhandleSubmit = async () => {
+    setIsLoading(true);
+    const data = new FormData();
+    data.append("email", `${values.email}`);
+    data.append("password", `${values.password}`);
+    data.append("name", `${values.fullName}`);
+    data.append("reflink", `${values.reflink}`);
+    data.append("btcaddress", `${values.btcaddress}`);
+    data.append("ethaddress", `${values.ethaddress}`);
+    data.append("username", `${values.username}`);
+
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: `${BaseUrl}/investregister.php`,
+      headers: {},
+      data: data
+    };
+
+    axios(config)
+      .then(function (res) {
+        console.log(res);
+
+        setIsLoading(false);
+        navigate("/verify", {
+          state: {
+            email: values.email
+          }
+        });
+      })
+      .catch(function (error) {
+        setIsLoading(false);
+        console.log(error);
+      });
+  };
+
+  const { values, handleChange, handleSubmit, errors, touched } = useFormik({
+    initialValues: {
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      reflink: "",
+      btcaddress: "",
+      ethaddress: "",
+      username: ""
+    },
+    validationSchema: signUpvalidationSchema,
+    onSubmit: onhandleSubmit
+  });
+
   return (
     <Container>
       <Navbar />
@@ -25,20 +85,66 @@ export const SignUp = () => {
       <Body>
         <Title>Sign up</Title>
         <InputSection>
-          <InputElement placeholder="Full name" />
-          <InputElement placeholder="Username" />
-          <InputElement placeholder="Password" />
-          <InputElement placeholder="Retype Password" />
-          <InputElement placeholder="Email Address" />
-          <InputElement placeholder="Withdrawal Address (BTC)" />
-          <InputElement placeholder="Withdrawal Address (ETH)" />
-          <InputElement placeholder="Referral link" />
+          <InputElement
+            placeholder="Full name"
+            value={values.fullName}
+            onChange={handleChange("fullName")}
+            errorMsg={touched.fullName ? errors.fullName : ""}
+          />
+          <InputElement
+            placeholder="Username"
+            value={values.username}
+            onChange={handleChange("username")}
+            errorMsg={touched.username ? errors.username : ""}
+          />
+          <InputElement
+            placeholder="Password"
+            value={values.password}
+            onChange={handleChange("password")}
+            type="password"
+            errorMsg={touched.password ? errors.password : ""}
+          />
+          <InputElement
+            placeholder="Retype Password"
+            value={values.confirmPassword}
+            onChange={handleChange("confirmPassword")}
+            type="password"
+            errorMsg={touched.confirmPassword ? errors.confirmPassword : ""}
+          />
+          <InputElement
+            placeholder="Email Address"
+            value={values.email}
+            onChange={handleChange("email")}
+            errorMsg={touched.email ? errors.email : ""}
+          />
+          <InputElement
+            placeholder="Withdrawal Address (BTC)"
+            value={values.btcaddress}
+            onChange={handleChange("btcaddress")}
+            errorMsg={touched.btcaddress ? errors.btcaddress : ""}
+          />
+          <InputElement
+            placeholder="Withdrawal Address (ETH)"
+            value={values.ethaddress}
+            onChange={handleChange("ethaddress")}
+            errorMsg={touched.ethaddress ? errors.ethaddress : ""}
+          />
+          <InputElement
+            placeholder="Referral link"
+            value={values.reflink}
+            onChange={handleChange("reflink")}
+            errorMsg={touched.reflink ? errors.reflink : ""}
+          />
         </InputSection>
         <CheckboxDiv>
           <Checkbox type={"checkbox"} />
           <h3>I agree with terms & Conditions</h3>
         </CheckboxDiv>
-        <PrimaryButton text="Create Account" />
+        <PrimaryButton
+          text="Create Account"
+          onClick={handleSubmit}
+          isLoading={isLoading}
+        />
       </Body>
       <Footer />
     </Container>

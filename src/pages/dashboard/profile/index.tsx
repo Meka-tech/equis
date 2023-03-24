@@ -6,6 +6,8 @@ import { Body, Container } from "../style";
 import { InputElement } from "./input";
 
 export const DashboardProfile = () => {
+  const data: any = localStorage.getItem("userData");
+  const userData = JSON.parse(data);
   return (
     <Container>
       <DashboardSidebar activeNav="Profile" />
@@ -15,13 +17,19 @@ export const DashboardProfile = () => {
           <a>Equis27299T1z3mq</a>
         </Referral>
         <Inputs>
-          <InputElement label="Account Name" />
-          <InputElement label="Username" />
-          <InputElement label="Email Address" />
-          <InputElement label="Registration Date" />
-          <InputElement label="Bitcoin Withdrawal Address" />
-          <InputElement label="Ethereum Withdrawal Address" />
-          <InputElement label="Password" />
+          <InputElement label="Account Name" value={userData.name} readOnly />
+          <InputElement label="Username" value={userData.username} />
+          <InputElement label="Email Address" value={userData.email} />
+          <InputElement label="Registration Date" value={userData.regdate} />
+          <InputElement
+            label="Bitcoin Withdrawal Address"
+            value={userData.btcaddress}
+          />
+          <InputElement
+            label="Ethereum Withdrawal Address"
+            value={userData.ethaddress}
+          />
+          <InputElement label="Password" value={userData.password} />
           <InputElement label="Change Password" />
         </Inputs>
         <Button>

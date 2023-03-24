@@ -20,7 +20,9 @@ export const Opportunity: FC<IProps> = ({
   max
 }) => {
   const navigate = useNavigate();
+  const LoggedIn = localStorage.getItem("loggedIn");
   const Onclick = () => {
+    if(LoggedIn === "true") {
     navigate("/dashboard-deposit", {
       state: {
         investment: "crypto",
@@ -28,7 +30,9 @@ export const Opportunity: FC<IProps> = ({
         profit: week,
         duration: duration
       }
-    });
+    });}else{
+      navigate("/login")
+    }
   };
   return (
     <Container>

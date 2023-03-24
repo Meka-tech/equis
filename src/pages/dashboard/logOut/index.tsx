@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate, useNavigation } from "react-router-dom";
 import styled from "styled-components";
 import { DashboardSidebar, PrimaryButton } from "../../../components";
 import { Body, Container } from "../style";
 
 export const Logout = () => {
+  const navigate = useNavigate();
+  const OnLogout = () => {
+    localStorage.removeItem("userData");
+    localStorage.removeItem("loggedIn");
+    navigate("/");
+  };
   return (
     <Container>
       <DashboardSidebar activeNav="log out" />
@@ -11,8 +18,8 @@ export const Logout = () => {
         <Box>
           <Text>Are you sure you want to logout</Text>
           <Buttons>
-            <YesBtn>Yes</YesBtn>
-            <NoBtn>No</NoBtn>
+            <YesBtn onClick={() => OnLogout()}>Yes</YesBtn>
+            <NoBtn onClick={() => navigate(-1)}>No</NoBtn>
           </Buttons>
         </Box>
       </Body>

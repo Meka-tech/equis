@@ -5,8 +5,10 @@ import HomeHero from "../../images/img/homeHero.png";
 import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { mobile, tab } from "../../utilities/responsive";
+import { useNavigate } from "react-router-dom";
 
 export const LearnMoreRealState = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Navbar />
@@ -20,12 +22,12 @@ export const LearnMoreRealState = () => {
           <Buttons>
             <PrimaryButton
               text="Current Opportunities"
-              to="/current-opportunities-real-estate"
+              onClick={() => navigate("/current-opportunities-real-estate")}
             />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
-              to="/learn-more-real-estate"
+              onClick={() => navigate("/learn-more-real-estate")}
             />
           </Buttons>
           <Scroll>
