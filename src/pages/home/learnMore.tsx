@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Footer, Navbar, PrimaryButton, ReadyBtn } from "../../components";
+import {
+  ChatIcon,
+  Footer,
+  Navbar,
+  PrimaryButton,
+  ReadyBtn
+} from "../../components";
 import HomeHero from "../../images/img/homeHero.png";
 import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 import { AiOutlineArrowDown } from "react-icons/ai";
@@ -9,9 +15,13 @@ import { useNavigate } from "react-router-dom";
 
 export const LearnMoreRealState = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 600);
+  });
   return (
     <Container>
       <Navbar />
+      <ChatIcon />
       <Header img={HomeHero}>
         <TextBox>
           <Heading>

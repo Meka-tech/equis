@@ -1,7 +1,7 @@
 import React, { FC, useState, useRef } from "react";
 import styled from "styled-components";
 import { ReactComponent as Logo } from "../../images/logo.svg";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { mobile, tab } from "../../utilities/responsive";
 import { ReactComponent as HamburgerMenu } from "../../images/svg/hamburger.svg";
 import useClickOutside from "../../hooks/useClickOutside";
@@ -29,6 +29,13 @@ export const Navbar: FC<IProps> = ({ activeNav = "home" }) => {
     ["about us", "/about-us"],
     ["login", "/login"],
     ["register", "/sign-up"]
+  ];
+
+  const MobileNavDashDetails = [
+    ["home", "/"],
+    ["crypto investments", "/crypto-investment"],
+    ["about us", "/about-us"],
+    ["Dashboard", "/dashboard-home"]
   ];
   const [active, setActive] = useState(false);
   useClickOutside(Ref, () => setActive(false));
@@ -77,18 +84,31 @@ export const Navbar: FC<IProps> = ({ activeNav = "home" }) => {
             <h2>EQUIS</h2>
           </MobileLogoDiv>
           <MobileNavItems>
-            {MobileNavDetails.map((nav, index) => (
-              <MobileNavLink
-                onClick={() => navigate(`${nav[1]}`)}
-                key={index}
-                active={activeNav === nav[0] ? "true" : "false"}
-              >
-                <MobileNavItem>
-                  <h1>{nav[0]}</h1>
-                  {activeNav === nav[0] && <ActiveBar />}
-                </MobileNavItem>
-              </MobileNavLink>
-            ))}
+            {LoggedIn === "true"
+              ? MobileNavDashDetails.map((nav, index) => (
+                  <MobileNavLink
+                    onClick={() => navigate(`${nav[1]}`)}
+                    key={index}
+                    active={activeNav === nav[0] ? "true" : "false"}
+                  >
+                    <MobileNavItem>
+                      <h1>{nav[0]}</h1>
+                      {activeNav === nav[0] && <ActiveBar />}
+                    </MobileNavItem>
+                  </MobileNavLink>
+                ))
+              : MobileNavDetails.map((nav, index) => (
+                  <MobileNavLink
+                    onClick={() => navigate(`${nav[1]}`)}
+                    key={index}
+                    active={activeNav === nav[0] ? "true" : "false"}
+                  >
+                    <MobileNavItem>
+                      <h1>{nav[0]}</h1>
+                      {activeNav === nav[0] && <ActiveBar />}
+                    </MobileNavItem>
+                  </MobileNavLink>
+                ))}
           </MobileNavItems>
           <NavFoot>
             <Mail width={"2rem"} />

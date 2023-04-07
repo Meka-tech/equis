@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import {
+  ChatIcon,
+  Coins,
   Footer,
   Navbar,
   PrimaryButton,
@@ -14,9 +16,10 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 export const CryptoInvestment = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <Container>
+      <ChatIcon />
       <Navbar activeNav="crypto investments" />
       <Header img={CryptoHero}>
         <TextBox>
@@ -26,15 +29,15 @@ export const CryptoInvestment = () => {
           <SubHeading>We understand value and deliver results</SubHeading>
           <Buttons>
             <PrimaryButton
-              text="Current Opportunities"
-              onClick={() => navigate("/current-opportunities-crypto-investment")}
-         
+              text="Trading Investment plans"
+              onClick={() =>
+                navigate("/current-opportunities-crypto-investment")
+              }
             />
             <PrimaryButton
               text="Learn More About Investing"
               variant="white"
               onClick={() => navigate("/learn-more-crypto-investment")}
-
             />
           </Buttons>
           <Scroll>
@@ -44,7 +47,7 @@ export const CryptoInvestment = () => {
         </TextBox>
       </Header>
       <Body>
-        <TradeInvest>
+        <TradeInvest data-aos="fade-right">
           <h2>Trading Investments with Equis</h2>
           <h4>
             In addition to real estate investments we at Equis are engaged in
@@ -58,12 +61,14 @@ export const CryptoInvestment = () => {
             simplify the relations between we and our investors.
           </h4>
         </TradeInvest>
+        <Coins />
         <Testimonials>
           <h2>Testimonials from previous Investors</h2>
           <h3>Trusted by 20k+ registered customers</h3>
         </Testimonials>
       </Body>
-      <Cards>
+
+      <Cards data-aos="fade-left">
         <CardInner>
           <TestimonialCard
             name="Mike Critch"

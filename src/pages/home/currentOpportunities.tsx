@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Footer, Navbar, PrimaryButton } from "../../components";
+import { ChatIcon, Footer, Navbar, PrimaryButton } from "../../components";
 import HomeHero from "../../images/img/homeHero.png";
 import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 
@@ -15,8 +15,12 @@ import { useNavigate } from "react-router-dom";
 
 export const CurrentOpportunitiesRealEstate = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 600);
+  });
   return (
     <Container>
+      <ChatIcon />
       <Navbar />
       <Header img={HomeHero}>
         <TextBox>
@@ -43,7 +47,7 @@ export const CurrentOpportunitiesRealEstate = () => {
         </TextBox>
       </Header>
       <Body>
-        <Opportunities>
+        <Opportunities data-aos="fade-right">
           <Opportunity
             title="Equity Raising for Luxury House in San Diego"
             description="Located in San Diego, USA we mapped out the best locations that assures a minimum of 35% per yearly irrespective of the real estate market conditions. Once the investment is recorded, the property is under our guidance and yields profits yearly."

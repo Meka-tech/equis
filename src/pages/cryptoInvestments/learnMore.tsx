@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Footer, Navbar, PrimaryButton, ReadyBtn } from "../../components";
+import {
+  ChatIcon,
+  Footer,
+  Navbar,
+  PrimaryButton,
+  ReadyBtn
+} from "../../components";
 import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 import CryptoHero from "../../images/img/cryptoHero.png";
 import { mobile, tab } from "../../utilities/responsive";
@@ -9,8 +15,12 @@ import { useNavigate } from "react-router-dom";
 
 export const LearnMoreCryptoInvestment = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 600);
+  });
   return (
     <Container>
+      <ChatIcon />
       <Navbar activeNav="crypto investments" />
       <Header img={CryptoHero}>
         <TextBox>
@@ -20,7 +30,7 @@ export const LearnMoreCryptoInvestment = () => {
           <SubHeading>We understand value and deliver results</SubHeading>
           <Buttons>
             <PrimaryButton
-              text="Current Opportunities"
+              text="Trading Investment plans"
               onClick={() =>
                 navigate("/current-opportunities-crypto-investment")
               }

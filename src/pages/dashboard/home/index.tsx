@@ -9,10 +9,9 @@ export const DashboardHome = () => {
   const data: any = localStorage.getItem("userData");
   const userData = JSON.parse(data);
   const navigate = useNavigate();
-  return (
-    <Container>
-      <DashboardSidebar />
-      <Body>
+  const CryptoDiv = () => {
+    return (
+      <>
         <Header>Crypto Trading Dashboard</Header>
         <DepositDiv>
           <DepositRow>
@@ -51,7 +50,8 @@ export const DashboardHome = () => {
             <h2>{userData.cryptopendingwithdraw}$</h2>
           </Detail>
           <Detail>
-            <h2>Investment Plan:</h2>
+            <h2>Investment Plan: </h2>
+            <h2>{userData.cryptoplan && userData.cryptoplan}</h2>
           </Detail>
           <Button>
             <PrimaryButton
@@ -62,6 +62,12 @@ export const DashboardHome = () => {
             />
           </Button>
         </Details>
+      </>
+    );
+  };
+  const RealEstateDiv = () => {
+    return (
+      <>
         <Header>Real Estate Dashboard</Header>
         <DepositDiv>
           <DepositRow>
@@ -100,7 +106,8 @@ export const DashboardHome = () => {
             <h2>{userData.estatependingwithdraw}$</h2>
           </Detail>
           <Detail>
-            <h2>Investment Plan:</h2>
+            <h2>Investment Plan: </h2>
+            <h2>{userData.estateplan && userData.estateplan}</h2>
           </Detail>
           <Button>
             <PrimaryButton
@@ -109,6 +116,26 @@ export const DashboardHome = () => {
             />
           </Button>
         </Details>
+      </>
+    );
+  };
+  return (
+    <Container>
+      <DashboardSidebar />
+      <Body>
+        {userData.cryptoplan && userData.estateplan ? (
+          <>
+            <CryptoDiv /> <RealEstateDiv />
+          </>
+        ) : userData.cryptoplan ? (
+          <CryptoDiv />
+        ) : userData.estateplan ? (
+          <RealEstateDiv />
+        ) : (
+          <>
+            <CryptoDiv /> <RealEstateDiv />
+          </>
+        )}
       </Body>
     </Container>
   );

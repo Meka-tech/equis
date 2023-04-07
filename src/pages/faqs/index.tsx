@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { FAQElement, Footer, Navbar, ReadyBtn } from "../../components";
+import {
+  ChatIcon,
+  FAQElement,
+  Footer,
+  Navbar,
+  ReadyBtn
+} from "../../components";
 import { mobile, tab } from "../../utilities/responsive";
 
 export const FAQs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <Container>
       <Navbar />
+      <ChatIcon />
       <Body>
         <Header>FAQs</Header>
-        <Elements>
+        <Elements data-aos="fade-left">
           <FAQElement
             question="How do i invest?"
             answer="Click the “ready to invest” button and follow the simples steps investing into the company’s address."
@@ -33,6 +43,10 @@ export const FAQs = () => {
           <FAQElement
             question="Can i get a referral bonus?"
             answer="Yes clients are entitled to a referral bonus once validated."
+          />
+          <FAQElement
+            question="Why do we use bitcoin for deposits and payouts?"
+            answer="Being a multinational investment platform and handling property deals, we aim to establish a peer-peer network where payments can be easily accessed by our members worldwide."
           />
         </Elements>
         <ReadyToInvest>

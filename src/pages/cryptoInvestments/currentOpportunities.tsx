@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Footer, Navbar, PrimaryButton } from "../../components";
+import { ChatIcon, Footer, Navbar, PrimaryButton } from "../../components";
 import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 import CryptoHero from "../../images/img/cryptoHero.png";
 import WaveHeader from "../../images/img/waveHeader.png";
@@ -11,9 +11,12 @@ import { useNavigate } from "react-router-dom";
 
 export const CurrentOpportunitiesCryptoInvestment = () => {
   const navigate = useNavigate();
-
+  useEffect(() => {
+    window.scrollTo(0, 600);
+  });
   return (
     <Container>
+      <ChatIcon />
       <Navbar activeNav="crypto investments" />
       <Header img={CryptoHero}>
         <TextBox>
@@ -23,7 +26,7 @@ export const CurrentOpportunitiesCryptoInvestment = () => {
           <SubHeading>We understand value and deliver results</SubHeading>
           <Buttons>
             <PrimaryButton
-              text="Current Opportunities"
+              text="Trading Investment plans"
               onClick={() =>
                 navigate("/current-opportunities-crypto-investment")
               }
@@ -45,7 +48,7 @@ export const CurrentOpportunitiesCryptoInvestment = () => {
         <h2>Fixed Investment Plans</h2>
       </HeadingImage>
       <Body>
-        <Opportunities>
+        <Opportunities data-aos="fade-down">
           <Opportunity
             heading="EQUIS STARTER PLAN"
             week="2.5"
@@ -83,7 +86,7 @@ export const CurrentOpportunitiesCryptoInvestment = () => {
           />
           <Opportunity
             heading="EQUIS PLATINUM"
-            week="3.5"
+            week="6.0"
             duration="6 MONTHS"
             min={"100,000"}
             max={"1,000,000"}

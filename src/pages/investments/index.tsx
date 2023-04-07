@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Footer, Navbar, PrimaryButton } from "../../components";
+import { ChatIcon, Footer, Navbar, PrimaryButton } from "../../components";
 import WaveHeader from "../../images/img/waveHeader.png";
 import { mobile, tab } from "../../utilities/responsive";
 import { CryptoOpportunity } from "./cryptoOpportunity";
@@ -12,15 +12,19 @@ import { useNavigate } from "react-router-dom";
 
 export const Investments = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <Container>
       <Navbar />
+      <ChatIcon />
       <HeadingImage img={WaveHeader}>
         <img src={WaveHeader} alt="wave" />
         <h2>Crypto Investment Plans</h2>
       </HeadingImage>
       <Body>
-        <Opportunities>
+        <Opportunities data-aos="fade-right">
           <CryptoOpportunity
             heading="EQUIS STARTER PLAN"
             week="2.5"
@@ -58,7 +62,7 @@ export const Investments = () => {
           />
           <CryptoOpportunity
             heading="EQUIS PLATINUM"
-            week="3.5"
+            week="6.0"
             duration="6 MONTHS"
             min={"100,000"}
             max={"1,000,000"}
@@ -73,7 +77,7 @@ export const Investments = () => {
           />
         </Button>
         <Heading>Real Estate Investment Plans</Heading>
-        <Opportunities>
+        <Opportunities data-aos="fade-left">
           <RealEstateOpportunity
             title="Equity Raising for Luxury House in San Diego"
             description="Located in San Diego, USA we mapped out the best locations that assures a minimum of 35% per yearly irrespective of the real estate market conditions. Once the investment is recorded, the property is under our guidance and yields profits yearly."

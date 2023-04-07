@@ -11,7 +11,7 @@ const useClickOutside = (ref, callback, nodeIgnoreList) => {
       //  List of dom nodes to ignore
       if (nodeIgnoreList) {
         nodeIgnoreList?.forEach((item) => {
-          console.log(item.current === event.target);
+  
           if (
             item.current === event.target ||
             item.current.contains(event.target)

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Footer, Navbar, PrimaryButton } from "../../components";
+import { ChatIcon, Footer, Navbar, PrimaryButton } from "../../components";
 import HomeHero from "../../images/img/homeHero.png";
 import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 
@@ -13,6 +13,9 @@ import { BaseUrl } from "../../utilities/API";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { loginValidationSchema } from "./validationSchema";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -35,15 +38,18 @@ export const Login = () => {
     axios(config)
       .then(function (res) {
         setIsLoading(false);
-        console.log(res.data[0]);
-        const userData = res.data[0];
-        localStorage.setItem("userData", JSON.stringify(userData));
-        localStorage.setItem("loggedIn", "true");
-        navigate("/dashboard-home");
+
+        if (res.data.error) {
+          toast.error(`${res.data.message}`);
+        } else {
+          navigate("/dashboard-home");
+          const userData = res.data[0];
+          localStorage.setItem("userData", JSON.stringify(userData));
+          localStorage.setItem("loggedIn", "true");
+        }
       })
       .catch(function (error) {
         setIsLoading(false);
-        console.log(error);
       });
   };
 
@@ -56,10 +62,11 @@ export const Login = () => {
     onSubmit: onhandleSubmit
   });
   const data = localStorage.getItem("userData");
-  console.log(data);
 
   return (
     <Container>
+      <ChatIcon />
+      <ToastContainer />
       <Navbar />
       <Header img={HomeHero}>
         <TextBox>

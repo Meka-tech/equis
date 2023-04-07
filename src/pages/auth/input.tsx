@@ -1,17 +1,48 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as ErrorIcon } from "../../images/svg/error.svg";
 import { mobile, tab } from "../../utilities/responsive";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   width?: string;
   placeholder?: string;
   errorMsg?: string;
+  type?: string;
 }
-export const InputElement: FC<IProps> = ({ width, errorMsg, ...rest }) => {
+export const InputElement: FC<IProps> = ({
+  type,
+  width,
+  errorMsg,
+  ...rest
+}) => {
+  const [passwordType, setPasswordType] = useState("password");
   return (
     <Container>
-      <Input {...rest} width={width} />
+      <Body>
+        <Input
+          {...rest}
+          width={width}
+          type={type === "password" ? passwordType : type}
+        />
+        {type === "password" && (
+          <Eye
+            onClick={() => {
+              if (passwordType === "password") {
+                setPasswordType("text");
+              } else {
+                setPasswordType("password");
+              }
+            }}
+          >
+            {passwordType === "password" ? (
+              <AiOutlineEyeInvisible color="rgba(0, 147, 255, 0.5)" size={25} />
+            ) : (
+              <AiOutlineEye color="rgba(0, 147, 255, 0.5)" size={25} />
+            )}
+          </Eye>
+        )}
+      </Body>
       {errorMsg && (
         <ErrorDiv>
           <ErrorIcon width={"1.2rem"} /> <h3>{errorMsg}</h3>
@@ -26,10 +57,14 @@ const Container = styled.div`
   font-family: "poppins", sans-serif;
 `;
 
+const Body = styled.div`
+  position: relative;
+`;
 interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {
   width?: string;
 }
 const Input = styled.input<IInput>`
+  position: relative;
   outline: none;
   border: none;
   background-color: rgba(0, 147, 255, 0.1);
@@ -58,4 +93,12 @@ const ErrorDiv = styled.div`
 
   display: flex;
   align-items: center;
+`;
+
+const Eye = styled.div`
+  position: absolute;
+  transform: translateY(-50%);
+  top: 55%;
+  right: 1rem;
+  cursor: pointer;
 `;

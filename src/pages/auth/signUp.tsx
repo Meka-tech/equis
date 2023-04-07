@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Footer, Navbar, PrimaryButton } from "../../components";
+import { ChatIcon, Footer, Navbar, PrimaryButton } from "../../components";
 import HomeHero from "../../images/img/homeHero.png";
 import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 
@@ -13,6 +13,9 @@ import { BaseUrl } from "../../utilities/API";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { signUpvalidationSchema } from "./validationSchema";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export const SignUp = () => {
   const navigate = useNavigate();
@@ -40,18 +43,19 @@ export const SignUp = () => {
 
     axios(config)
       .then(function (res) {
-        console.log(res);
-
         setIsLoading(false);
-        navigate("/verify", {
-          state: {
-            email: values.email
-          }
-        });
+        if (res.data.error) {
+          toast.error(`${res.data.message}`);
+        } else {
+          navigate("/verify", {
+            state: {
+              email: values.email
+            }
+          });
+        }
       })
       .catch(function (error) {
         setIsLoading(false);
-        console.log(error);
       });
   };
 
@@ -73,6 +77,8 @@ export const SignUp = () => {
   return (
     <Container>
       <Navbar />
+      <ChatIcon />
+      <ToastContainer />
       <Header img={HomeHero}>
         <TextBox>
           <Heading>Sign Up</Heading>
@@ -133,7 +139,6 @@ export const SignUp = () => {
             placeholder="Referral link"
             value={values.reflink}
             onChange={handleChange("reflink")}
-            errorMsg={touched.reflink ? errors.reflink : ""}
           />
         </InputSection>
         <CheckboxDiv>

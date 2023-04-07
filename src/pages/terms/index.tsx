@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Footer, Navbar } from "../../components";
+import { ChatIcon, Footer, Navbar } from "../../components";
 import { mobile } from "../../utilities/responsive";
 
 export const TermsConditions = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <Container>
+      <ChatIcon />
       <Navbar />
       <Body>
         <h1>Terms and Conditions</h1>

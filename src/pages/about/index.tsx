@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {
+  ChatIcon,
   Footer,
   Navbar,
   PrimaryButton,
@@ -29,6 +30,7 @@ import { mobile, tab } from "../../utilities/responsive";
 export const AboutUs = () => {
   return (
     <Container>
+      <ChatIcon />
       <Navbar activeNav="about us" />
       <Header img={HomeHero}>
         <TextBox>
@@ -45,7 +47,7 @@ export const AboutUs = () => {
         </TextBox>
       </Header>
       <Body>
-        <Texts>
+        <Texts data-aos="fade-right">
           {" "}
           <SubTitle>Intro</SubTitle>
           <Paragraph>
@@ -71,7 +73,7 @@ export const AboutUs = () => {
           </Paragraph>
         </Texts>
 
-        <Why>
+        <Why data-aos="fade-left">
           <WhyTitle>
             <Left />
             <h2>Why</h2> <Right />
@@ -123,7 +125,7 @@ export const AboutUs = () => {
           </Cards>
         </Why>
       </Body>
-      <HowWorks>
+      <HowWorks data-aos="fade-right">
         <HWHeader>How Equis Works</HWHeader>
         <HWInner>
           <Worker>

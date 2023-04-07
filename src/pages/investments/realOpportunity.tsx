@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PrimaryButton } from "../../components";
 import { mobile, tab } from "../../utilities/responsive";
+import moment from "moment";
 
 interface IProps {
   title: string;
@@ -15,29 +16,43 @@ export const RealEstateOpportunity: FC<IProps> = ({
   image
 }) => {
   let navigate = useNavigate();
+  const LoggedIn = localStorage.getItem("loggedIn");
   const Onclick = () => {
-    navigate("/invest-real-estate", {
-      state: {
-        title: title,
-        description: description,
-        image: image
-      }
-    });
+    if (LoggedIn === "true") {
+      navigate("/dashboard-deposit", {
+        state: {
+          investment: "estate",
+          plan: title,
+          profit: 35,
+          duration: ""
+        }
+      });
+    } else {
+      navigate("/login");
+    }
   };
+
+  const timeStamp = moment(
+    new Date("09/09/2023 15:00:00"),
+    "DD/MM/YYYY HH:mm:ss"
+  );
+  const currentTime = moment(new Date(), "DD/MM/YYYY HH:mm:ss");
+  const duration: any = moment.duration(timeStamp.diff(currentTime));
+
   return (
     <Container>
       <TextDiv>
         <TimeDiv>
           <NumberBox>
-            <h3>06</h3>
+            <h3>{duration._data.months}</h3>
             <h4>Month</h4>
           </NumberBox>
           <NumberBox>
-            <h3>25</h3>
+            <h3>{duration._data.days}</h3>
             <h4>Days</h4>
           </NumberBox>
           <NumberBox>
-            <h3>12</h3>
+            <h3>{duration._data.hours}</h3>
             <h4>Hours</h4>
           </NumberBox>
           <h2>Remaining</h2>
@@ -47,6 +62,9 @@ export const RealEstateOpportunity: FC<IProps> = ({
           Be an Investor and live your dream life , follow the links bellow to
           read more about the project
         </Description>
+        <ImageDivMobile>
+          <img src={image} alt="houseImage" />
+        </ImageDivMobile>
         <Button onClick={Onclick}>
           <PrimaryButton text="Become Investor now" />
         </Button>
@@ -132,6 +150,21 @@ const ImageDiv = styled.div`
   align-items: center;
   justify-content: end;
   ${tab({
+    display: "none"
+  })}
+  img {
+    object-fit: cover;
+    width: 40rem;
+  }
+`;
+const ImageDivMobile = styled.div`
+  flex: 1;
+  display: none;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 3rem;
+  ${tab({
+    display: "flex",
     justifyContent: "center"
   })}
   img {

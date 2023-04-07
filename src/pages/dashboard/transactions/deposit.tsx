@@ -6,6 +6,10 @@ import { Body, Container } from "../style";
 import { ReactComponent as SuccessIcon } from "../../../images/icons/successIcon.svg";
 import { useLocation } from "react-router-dom";
 import { tab } from "../../../utilities/responsive";
+import axios from "axios";
+import { BaseUrl } from "../../../utilities/API";
+import { useFormik } from "formik";
+import { Refresh } from "../../../utilities/API/refresh";
 
 export const DashboardDeposit = () => {
   const [success, setSucess] = useState(false);
@@ -13,6 +17,45 @@ export const DashboardDeposit = () => {
   const { plan, profit, duration, investment } = location.state;
   const data: any = localStorage.getItem("userData");
   const userData = JSON.parse(data);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onhandleSubmit = async () => {
+    setIsLoading(true);
+    const data = new FormData();
+    data.append("email", `${userData.email}`);
+    data.append("id", `${userData.id}`);
+    data.append("name", `${userData.name}`);
+    data.append("amount", `${values.amount}`);
+    data.append("type", `${investment}`);
+    data.append("key", `${Math.floor(Math.random() * 1000) + 1}`);
+    data.append("plan", `${plan}`);
+
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: `${BaseUrl}/investdepositapi.php`,
+      headers: {},
+      data: data
+    };
+
+    axios(config)
+      .then(function (res) {
+        setIsLoading(false);
+
+        Refresh();
+        setSucess(true);
+      })
+      .catch(function (error) {
+        setIsLoading(false);
+      });
+  };
+
+  const { values, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      amount: 0
+    },
+    onSubmit: onhandleSubmit
+  });
 
   return (
     <Container>
@@ -37,7 +80,11 @@ export const DashboardDeposit = () => {
             </Detail>
             <Detail>
               <h2>Amount($):</h2>
-              <Input placeholder="0.00" />
+              <Input
+                placeholder="0.00"
+                value={values.amount}
+                onChange={handleChange("amount")}
+              />
             </Detail>
             <Detail>
               <h2>Withdrawal:</h2>
@@ -49,7 +96,11 @@ export const DashboardDeposit = () => {
             </Text>
             <Address>bc1q4hjxp5qx3la76qgazvpzm4kgh3x9c8mgr762fw</Address>
             <Button>
-              <PrimaryButton text="Done" onClick={() => setSucess(true)} />
+              <PrimaryButton
+                text="Done"
+                onClick={handleSubmit}
+                isLoading={isLoading}
+              />
             </Button>
           </Box>
         ) : (

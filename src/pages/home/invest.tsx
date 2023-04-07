@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Footer, Navbar, PrimaryButton } from "../../components";
 import HomeHero from "../../images/img/homeHero.png";
@@ -19,7 +19,7 @@ export const InvestRealEstate = () => {
     if (LoggedIn === "true") {
       navigate("/dashboard-deposit", {
         state: {
-          investment: "real-estate",
+          investment: "estate",
           plan: title,
           profit: 35,
           duration: ""
@@ -29,7 +29,9 @@ export const InvestRealEstate = () => {
       navigate("/login");
     }
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 600);
+  });
   return (
     <Container>
       <Navbar />

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { DashboardSidebar, PrimaryButton } from "../../../components";
 import { Body, Container } from "../style";
@@ -7,16 +7,66 @@ import { ReactComponent as SuccessIcon } from "../../../images/icons/successIcon
 import { tab } from "../../../utilities/responsive";
 import { AiOutlineDown } from "react-icons/ai";
 import useClickOutside from "../../../hooks/useClickOutside";
+import axios from "axios";
+import { BaseUrl } from "../../../utilities/API";
+import { useFormik } from "formik";
+import { Refresh } from "../../../utilities/API/refresh";
 
 export const DashboardWithdraw = () => {
   const [error, setError] = useState(false);
   const [success, setSucess] = useState(false);
   const [dropActive, setDropActive] = useState(false);
-  const [account, setAccount] = useState("trading");
+  const [account, setAccount] = useState("crypto");
   const dropRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   useClickOutside(dropRef, () => setDropActive(false));
   const data: any = localStorage.getItem("userData");
   const userData = JSON.parse(data);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onhandleSubmit = async () => {
+    if (values.amount > userData.cryptobalance && account === "crypto") {
+      setError(true);
+      return;
+    } else if (values.amount > userData.estatebalance && account === "estate") {
+      setError(true);
+      return;
+    } else {
+      setError(false);
+      setIsLoading(true);
+      const data = new FormData();
+      data.append("email", `${userData.email}`);
+      data.append("id", `${userData.id}`);
+      data.append("name", `${userData.name}`);
+      data.append("amount", `${values.amount}`);
+      data.append("type", `${account}`);
+
+      const config = {
+        method: "post",
+        maxBodyLength: Infinity,
+        url: `${BaseUrl}/investwithdrawapi.php`,
+        headers: {},
+        data: data
+      };
+
+      axios(config)
+        .then(function (res) {
+          Refresh();
+          setIsLoading(false);
+          setSucess(true);
+        })
+        .catch(function (error) {
+          setIsLoading(false);
+        });
+    }
+  };
+
+  const { values, handleChange, handleSubmit, errors, touched } = useFormik({
+    initialValues: {
+      amount: 0
+    },
+    onSubmit: onhandleSubmit
+  });
+
   return (
     <Container>
       <DashboardSidebar activeNav="Withdraw" />
@@ -29,22 +79,24 @@ export const DashboardWithdraw = () => {
         </Header>
         {dropActive && (
           <DropDown ref={dropRef}>
-            <h2
+            <DropItem
+              active={account === "crypto"}
               onClick={() => {
-                setAccount("trading");
+                setAccount("crypto");
                 setDropActive(false);
               }}
             >
               Trading Account
-            </h2>
-            <h2
+            </DropItem>
+            <DropItem
+              active={account === "estate"}
               onClick={() => {
-                setAccount("real");
+                setAccount("estate");
                 setDropActive(false);
               }}
             >
               Real Estate Account
-            </h2>
+            </DropItem>
           </DropDown>
         )}
         {!success ? (
@@ -53,7 +105,7 @@ export const DashboardWithdraw = () => {
               <h2>Account balance:</h2>
               <h3>
                 $
-                {account === "trading"
+                {account === "crypto"
                   ? userData.cryptobalance
                   : userData.estatebalance}
               </h3>
@@ -65,7 +117,11 @@ export const DashboardWithdraw = () => {
             <Detail />
             <Detail>
               <h2>Withdrawal Amount ($):</h2>
-              <Input placeholder="0.00" />
+              <Input
+                placeholder="0.00"
+                value={values.amount}
+                onChange={handleChange("amount")}
+              />
             </Detail>
             {error && (
               <Error>
@@ -74,7 +130,11 @@ export const DashboardWithdraw = () => {
               </Error>
             )}
             <Button>
-              <PrimaryButton text="Withdraw" />
+              <PrimaryButton
+                text="Withdraw"
+                onClick={handleSubmit}
+                isLoading={isLoading}
+              />
             </Button>
           </Box>
         ) : (
@@ -108,6 +168,9 @@ const Header = styled.div`
   width: fit-content;
   position: relative;
 `;
+interface ActiveDrop {
+  active?: boolean;
+}
 const DropDown = styled.div`
   border: 1px solid rgba(0, 147, 255, 1);
   width: fit-content;
@@ -124,6 +187,20 @@ const DropDown = styled.div`
       background-color: rgba(0, 147, 255, 1);
       color: white;
     }
+  }
+`;
+const DropItem = styled.h2<ActiveDrop>`
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  background-color: ${(props) =>
+    props.active ? "rgba(0, 147, 255, 1)" : "white"};
+  color: ${(props) => (props.active ? "white" : "black")};
+  &:hover {
+    background-color: rgba(0, 147, 255, 1);
+    color: white;
   }
 `;
 const Box = styled.div`

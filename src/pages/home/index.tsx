@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import {
+  ChatIcon,
   Footer,
   Navbar,
   PrimaryButton,
@@ -24,10 +25,15 @@ import ZigZag from "../../images/svg/zigZag.svg";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import BlueShade from "../../images/img/blueShadow.png";
 import { mobile, tab } from "../../utilities/responsive";
+
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <Container>
       <Navbar />
@@ -56,7 +62,7 @@ export const Home = () => {
         </TextBox>
       </Header>
       <Body>
-        <OwnParts>
+        <OwnParts data-aos="fade-right">
           <h2>Own Parts of Places People Go the Most</h2>
           <h4>
             With your funds in high yielding real estate, you'll enjoy returns
@@ -71,7 +77,7 @@ export const Home = () => {
             <Left />
             <h2>Why</h2> <Right />
           </WhyTitle>
-          <WhyTexts>
+          <WhyTexts data-aos="fade-left">
             {" "}
             <h3>Equis Limited Partnerships</h3>
             <h4>
@@ -82,7 +88,8 @@ export const Home = () => {
               and Trading investments.
             </h4>
           </WhyTexts>
-          <Cards>
+          <ChatIcon />
+          <Cards data-aos="fade-right">
             <WhyCard
               title="Invest Alongside The Experts"
               content="We bring our members high quality commercial investment opportunities that are normally hidden away in country clubs or investment firms. Investors get access to a diverse range of retail"
@@ -125,11 +132,10 @@ export const Home = () => {
               text="Learn More About Investing"
               variant="blue"
               onClick={() => navigate("/learn-more-real-estate")}
-              
             />
           </Buttons>
         </Why>
-        <AboutDiv>
+        <AboutDiv data-aos="fade-left">
           <AboutTextBox>
             <AboutTitle>
               <Bar />
@@ -156,7 +162,7 @@ export const Home = () => {
           <ReadyBtn size={9} to="/current-opportunities-real-estate" />
         </ReadyToInvest>
         <MailList>
-          <InputDiv>
+          <InputDiv data-aos="fade-right">
             <InputDivTitle>
               Join our email list now and get
               <br /> a free industry eBook
@@ -194,7 +200,7 @@ export const Home = () => {
               <PrimaryButton text="join mailing list" width="100%" />
             </InputDivInner>
           </InputDiv>
-          <BookDiv>
+          <BookDiv data-aos="fade-left">
             <img src={Book} alt="book" />
             <Lists>
               <ol>
@@ -203,11 +209,11 @@ export const Home = () => {
                 </h3>
                 <h3>2)Tax advantages of investing </h3>
                 <h3>3) Active Vs. Passive Investing</h3>
-                <h3>4) How h3mited Partnerships work </h3>
+                <h3>4) How Limited Partnerships work </h3>
                 <h3>5) How to find deals that are recession resistant</h3>
               </ol>
               <ol>
-                <h3>6) Markets that are recession resih3ent</h3>
+                <h3>6) Markets that are recession resilient</h3>
                 <h3>
                   7) How to Analyse deals in a rising interest rate environment
                 </h3>
@@ -290,6 +296,7 @@ const Buttons = styled.div`
   max-width: 50rem;
   margin: 0 auto;
   margin-bottom: 10%;
+
   ${tab({
     flexDirection: "column",
     alignItems: "center",
@@ -301,7 +308,7 @@ const Buttons = styled.div`
     alignItems: "center",
     justifyContent: "space-between",
     height: "10rem"
-  })}
+  })};
 `;
 const Scroll = styled.div`
   margin: 0 auto;
@@ -405,6 +412,7 @@ const Cards = styled.div`
   grid-column-gap: 8.3%;
   grid-row-gap: 5rem;
   position: relative;
+
   ${tab({
     display: "flex",
     flexDirection: "column"

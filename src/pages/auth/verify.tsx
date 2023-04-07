@@ -38,7 +38,6 @@ export const Verify = () => {
       .then(function (res) {
         setIsLoading(false);
         navigate("/registered");
-        console.log(res);
       })
       .catch(function (error) {
         setIsLoading(false);

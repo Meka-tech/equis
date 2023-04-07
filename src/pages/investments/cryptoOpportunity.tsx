@@ -20,15 +20,20 @@ export const CryptoOpportunity: FC<IProps> = ({
   max
 }) => {
   const navigate = useNavigate();
+  const LoggedIn = localStorage.getItem("loggedIn");
   const Onclick = () => {
-    navigate("/dashboard-deposit", {
-      state: {
-        investment: "crypto",
-        plan: heading,
-        profit: week,
-        duration: duration
-      }
-    });
+    if (LoggedIn === "true") {
+      navigate("/dashboard-deposit", {
+        state: {
+          investment: "crypto",
+          plan: heading,
+          profit: week,
+          duration: duration
+        }
+      });
+    } else {
+      navigate("/login");
+    }
   };
   return (
     <Container>

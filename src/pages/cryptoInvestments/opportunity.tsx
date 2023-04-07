@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { InvestBtn, ReadyBtn } from "../../components";
@@ -22,18 +22,22 @@ export const Opportunity: FC<IProps> = ({
   const navigate = useNavigate();
   const LoggedIn = localStorage.getItem("loggedIn");
   const Onclick = () => {
-    if(LoggedIn === "true") {
-    navigate("/dashboard-deposit", {
-      state: {
-        investment: "crypto",
-        plan: heading,
-        profit: week,
-        duration: duration
-      }
-    });}else{
-      navigate("/login")
+    if (LoggedIn === "true") {
+      navigate("/dashboard-deposit", {
+        state: {
+          investment: "crypto",
+          plan: heading,
+          profit: week,
+          duration: duration
+        }
+      });
+    } else {
+      navigate("/login");
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 600);
+  });
   return (
     <Container>
       <Header>
