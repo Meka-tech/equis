@@ -161,7 +161,7 @@ const SubHeading = styled.h2`
 const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 75%;
+  width: 90%;
   max-width: 50rem;
   margin: 0 auto;
   margin-bottom: 10%;
