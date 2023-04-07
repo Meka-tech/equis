@@ -1,7 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { DashboardSidebar, PrimaryButton } from "../../../components";
+import {
+  CryptoBanner,
+  DashboardSidebar,
+  PrimaryButton
+} from "../../../components";
 import { tab } from "../../../utilities/responsive";
 import { Body, Container } from "../style";
 
@@ -122,21 +126,24 @@ export const DashboardHome = () => {
   return (
     <Container>
       <DashboardSidebar />
-      <Body>
-        {userData.cryptoplan && userData.estateplan ? (
-          <>
-            <CryptoDiv /> <RealEstateDiv />
-          </>
-        ) : userData.cryptoplan ? (
-          <CryptoDiv />
-        ) : userData.estateplan ? (
-          <RealEstateDiv />
-        ) : (
-          <>
-            <CryptoDiv /> <RealEstateDiv />
-          </>
-        )}
-      </Body>
+      <Bodyy>
+        <CryptoBanner />
+        <Body>
+          {userData.cryptoplan && userData.estateplan ? (
+            <>
+              <CryptoDiv /> <RealEstateDiv />
+            </>
+          ) : userData.cryptoplan ? (
+            <CryptoDiv />
+          ) : userData.estateplan ? (
+            <RealEstateDiv />
+          ) : (
+            <>
+              <CryptoDiv /> <RealEstateDiv />
+            </>
+          )}
+        </Body>
+      </Bodyy>
     </Container>
   );
 };
@@ -150,7 +157,10 @@ const Header = styled.h1`
   margin-top: 3rem;
   margin-bottom: 1rem;
 `;
-
+const Bodyy = styled(Body)`
+  padding: 0;
+  overflow: hidden;
+`;
 const DepositDiv = styled.div`
   background-color: rgba(229, 244, 255, 1);
   width: 100%;

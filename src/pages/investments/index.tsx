@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { ChatIcon, Footer, Navbar, PrimaryButton } from "../../components";
+import {
+  ChatIcon,
+  CryptoBanner,
+  Footer,
+  Navbar,
+  PrimaryButton
+} from "../../components";
 import WaveHeader from "../../images/img/waveHeader.png";
 import { mobile, tab } from "../../utilities/responsive";
 import { CryptoOpportunity } from "./cryptoOpportunity";
@@ -23,6 +29,7 @@ export const Investments = () => {
         <img src={WaveHeader} alt="wave" />
         <h2>Crypto Investment Plans</h2>
       </HeadingImage>
+      <CryptoBanner />
       <Body>
         <Opportunities data-aos="fade-right">
           <CryptoOpportunity

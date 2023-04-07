@@ -183,7 +183,7 @@ const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
   width: 90%;
-  max-width: 50rem;
+  max-width: 55rem;
   margin: 0 auto;
   margin-bottom: 10%;
   ${tab({

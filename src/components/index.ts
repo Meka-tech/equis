@@ -6,3 +6,4 @@ export * from "./cards";
 export * from "./FAQelement";
 export * from "./chatIcon";
 export * from "./cyptocoins";
+export * from "./cryptoBanner";

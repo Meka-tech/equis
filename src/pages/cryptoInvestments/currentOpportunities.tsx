@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { ChatIcon, Footer, Navbar, PrimaryButton } from "../../components";
+import {
+  ChatIcon,
+  CryptoBanner,
+  Footer,
+  Navbar,
+  PrimaryButton
+} from "../../components";
 import { ReactComponent as Mouse } from "../../images/svg/mouseSvg.svg";
 import CryptoHero from "../../images/img/cryptoHero.png";
 import WaveHeader from "../../images/img/waveHeader.png";
@@ -47,6 +53,7 @@ export const CurrentOpportunitiesCryptoInvestment = () => {
         <img src={WaveHeader} alt="wave" />
         <h2>Fixed Investment Plans</h2>
       </HeadingImage>
+      <CryptoBanner />
       <Body>
         <Opportunities data-aos="fade-down">
           <Opportunity
@@ -162,7 +169,7 @@ const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
   width: 90%;
-  max-width: 50rem;
+  max-width: 55rem;
   margin: 0 auto;
   margin-bottom: 10%;
   ${tab({
@@ -208,7 +215,7 @@ const HeadingImage = styled.div<IHeader>`
     font-family: "poppins", sans-serif;
     font-size: 4.2vw;
     line-height: 4rem;
-    margin-bottom: 5rem;
+    margin-bottom: 6rem;
     ${tab({
       fontSize: "3rem"
     })}
@@ -234,4 +241,7 @@ const Opportunities = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 20rem;
+  ${mobile({
+    marginTop: "3rem"
+  })}
 `;

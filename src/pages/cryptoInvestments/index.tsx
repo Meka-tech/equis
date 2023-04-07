@@ -170,7 +170,7 @@ const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
   width: 90%;
-  max-width: 50rem;
+  max-width: 55rem;
   margin: 0 auto;
   margin-bottom: 10%;
   ${tab({
@@ -203,10 +203,10 @@ const Scroll = styled.div`
 const Body = styled.div`
   padding: 1rem 10rem;
   ${tab({
-    padding: "1rem 5rem"
+    padding: "1rem 2rem"
   })}
   ${mobile({
-    padding: "1rem 5rem"
+    padding: "1rem 2rem"
   })}
 `;
 const ReadyToInvest = styled.div`

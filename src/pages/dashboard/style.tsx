@@ -21,6 +21,7 @@ export const Body = styled.div`
   box-sizing: border-box;
   padding: 3rem 5rem;
   overflow-y: scroll;
+  overflow-x: hidden;
   background-color: white;
   margin: 0 auto;
   position: relative;
