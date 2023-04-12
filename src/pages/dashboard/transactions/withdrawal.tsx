@@ -14,6 +14,7 @@ import { Refresh } from "../../../utilities/API/refresh";
 
 export const DashboardWithdraw = () => {
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [success, setSucess] = useState(false);
   const [dropActive, setDropActive] = useState(false);
   const [account, setAccount] = useState("crypto");
@@ -24,14 +25,28 @@ export const DashboardWithdraw = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onhandleSubmit = async () => {
-    if (values.amount > userData.cryptobalance && account === "crypto") {
+
+    if (values.amount === 0) {
       setError(true);
+      setErrorMessage("Can not withdraw $0");
+      return;
+    } else if (values.amount > userData.cryptobalance && account === "crypto") {
+      setError(true);
+      setErrorMessage("Insufficient balance");
       return;
     } else if (values.amount > userData.estatebalance && account === "estate") {
       setError(true);
+      setErrorMessage("Insufficient balance");
       return;
+    } else if (userData.cryptopendingwithdraw === "0") {
+      setError(true);
+      setErrorMessage("Pending withdrawal");
+    } else if (userData.estatependingwithdraw === "0") {
+      setError(true);
+      setErrorMessage("Pending withdrawal");
     } else {
       setError(false);
+      setErrorMessage("");
       setIsLoading(true);
       const data = new FormData();
       data.append("email", `${userData.email}`);
@@ -102,12 +117,12 @@ export const DashboardWithdraw = () => {
         {!success ? (
           <Box>
             <Detail>
-              <h2>Account balance:</h2>
+              <h2>Profit balance:</h2>
               <h3>
                 $
                 {account === "crypto"
-                  ? userData.cryptobalance
-                  : userData.estatebalance}
+                  ? userData.cryptototalearn
+                  : userData.estatetotalearn}
               </h3>
             </Detail>
             <Detail>
@@ -126,7 +141,7 @@ export const DashboardWithdraw = () => {
             {error && (
               <Error>
                 <ErrorIcon width={"1.6rem"} />
-                <h3>Insufficient balance</h3>
+                <h3>{errorMessage}</h3>
               </Error>
             )}
             <Button>

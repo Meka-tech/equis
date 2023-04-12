@@ -19,8 +19,8 @@ export const DashboardHome = () => {
         <Header>Crypto Trading Dashboard</Header>
         <DepositDiv>
           <DepositRow>
-            <h2>Active Deposit</h2>
-            <h3>$0.00</h3>
+            <h2>Profit</h2>
+            <h3>${userData.cryptototalearn}</h3>
             <ColorGreen />
           </DepositRow>
           <DepositRow>
@@ -75,8 +75,8 @@ export const DashboardHome = () => {
         <Header>Real Estate Dashboard</Header>
         <DepositDiv>
           <DepositRow>
-            <h2>Active Deposit</h2>
-            <h3>$0.00</h3>
+            <h2>Profit</h2>
+            <h3>${userData.estatetotalearn}</h3>
             <ColorGreen />
           </DepositRow>
           <DepositRow>

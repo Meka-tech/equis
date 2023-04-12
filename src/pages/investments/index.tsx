@@ -36,43 +36,43 @@ export const Investments = () => {
             heading="EQUIS STARTER PLAN"
             week="2.5"
             duration="1 MONTH"
-            min={"25"}
-            max={"99"}
+            min={25}
+            max={99}
           />
           <CryptoOpportunity
             heading="EQUIS BRONZE"
             week="3.5"
             duration="1 MONTH"
-            min={"100"}
-            max={"3,999"}
+            min={100}
+            max={3999}
           />
           <CryptoOpportunity
             heading="EQUIS SILVER"
             week="3.9"
             duration="2 MONTHS"
-            min={"4,000"}
-            max={"19,999"}
+            min={4000}
+            max={19999}
           />
           <CryptoOpportunity
             heading="EQUIS DIAMOND"
             week="4.5"
             duration="6 MONTHS"
-            min={"20,000"}
-            max={"45,999"}
+            min={20000}
+            max={45999}
           />
           <CryptoOpportunity
             heading="EQUIS GOLD"
             week="5.0"
             duration="6 MONTHS"
-            min={"45,999"}
-            max={"99,999"}
+            min={45999}
+            max={99999}
           />
           <CryptoOpportunity
             heading="EQUIS PLATINUM"
             week="6.0"
             duration="6 MONTHS"
-            min={"100,000"}
-            max={"1,000,000"}
+            min={100000}
+            max={1000000}
           />
         </Opportunities>
         <Button>

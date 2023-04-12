@@ -112,7 +112,7 @@ export const Navbar: FC<IProps> = ({ activeNav = "home" }) => {
           </MobileNavItems>
           <NavFoot>
             <Mail width={"2rem"} />
-            <h2>Invest@Equis.com</h2>
+            <a href={"mailto:Invest@Equis.com"}>Invest@Equis.com</a>
           </NavFoot>
         </Sidebar>
         <Shade active={active} />
@@ -332,11 +332,12 @@ const NavFoot = styled.div`
   padding: 0 2rem;
   margin-top: 5rem;
   display: flex;
-  h2 {
+  a {
     color: white;
     font-weight: 400;
     margin-left: 1rem;
     font-size: 1.6rem;
+    text-decoration: none;
   }
 `;
 

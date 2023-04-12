@@ -10,44 +10,56 @@ import axios from "axios";
 import { BaseUrl } from "../../../utilities/API";
 import { useFormik } from "formik";
 import { Refresh } from "../../../utilities/API/refresh";
+import { ReactComponent as ErrorIcon } from "../../../images/svg/error.svg";
 
 export const DashboardDeposit = () => {
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [success, setSucess] = useState(false);
   const location = useLocation();
-  const { plan, profit, duration, investment } = location.state;
+  const { plan, profit, duration, investment, min, max } = location.state;
   const data: any = localStorage.getItem("userData");
   const userData = JSON.parse(data);
   const [isLoading, setIsLoading] = useState(false);
 
   const onhandleSubmit = async () => {
-    setIsLoading(true);
-    const data = new FormData();
-    data.append("email", `${userData.email}`);
-    data.append("id", `${userData.id}`);
-    data.append("name", `${userData.name}`);
-    data.append("amount", `${values.amount}`);
-    data.append("type", `${investment}`);
-    data.append("key", `${Math.floor(Math.random() * 1000) + 1}`);
-    data.append("plan", `${plan}`);
+    if (values.amount >= min && values.amount <= max) {
+      setIsLoading(true);
+      setError(false);
+      setErrorMessage("");
+      const data = new FormData();
+      data.append("email", `${userData.email}`);
+      data.append("id", `${userData.id}`);
+      data.append("name", `${userData.name}`);
+      data.append("amount", `${values.amount}`);
+      data.append("type", `${investment}`);
+      data.append("key", `${Math.floor(Math.random() * 1000) + 1}`);
+      data.append("plan", `${plan}`);
+      data.append("percent", `${Number(profit)}`);
 
-    const config = {
-      method: "post",
-      maxBodyLength: Infinity,
-      url: `${BaseUrl}/investdepositapi.php`,
-      headers: {},
-      data: data
-    };
+      const config = {
+        method: "post",
+        maxBodyLength: Infinity,
+        url: `${BaseUrl}/investdepositapi.php`,
+        headers: {},
+        data: data
+      };
 
-    axios(config)
-      .then(function (res) {
-        setIsLoading(false);
-
-        Refresh();
-        setSucess(true);
-      })
-      .catch(function (error) {
-        setIsLoading(false);
-      });
+      axios(config)
+        .then(function (res) {
+          setIsLoading(false);
+          Refresh();
+          setSucess(true);
+        })
+        .catch(function (error) {
+          setIsLoading(false);
+        });
+    } else {
+      setError(true);
+      setErrorMessage(
+        `Can not deposit less than $${min} and more than $${max}`
+      );
+    }
   };
 
   const { values, handleChange, handleSubmit } = useFormik({
@@ -95,6 +107,12 @@ export const DashboardDeposit = () => {
               Investment wallet ;
             </Text>
             <Address>bc1q4hjxp5qx3la76qgazvpzm4kgh3x9c8mgr762fw</Address>
+            {error && (
+              <Error>
+                <ErrorIcon width={"1.6rem"} />
+                <h3>{errorMessage}</h3>
+              </Error>
+            )}
             <Button>
               <PrimaryButton
                 text="Done"
@@ -222,5 +240,14 @@ const SuccessDiv = styled.div`
     ${tab({
       fontSize: "1.4rem"
     })}
+  }
+`;
+const Error = styled.div`
+  display: flex;
+  align-items: center;
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-left: 1rem;
   }
 `;

@@ -4,13 +4,14 @@ import styled from "styled-components";
 import { InvestBtn, ReadyBtn } from "../../components";
 import WaveBackground from "../../images/img/wavebackground.png";
 import { mobile, tab } from "../../utilities/responsive";
+import { numberWithCommas } from "../../utilities/functions";
 
 interface IProps {
   heading: string;
   week: string;
   duration: string;
-  min: string;
-  max: string;
+  min: number;
+  max: number;
 }
 export const CryptoOpportunity: FC<IProps> = ({
   heading,
@@ -28,7 +29,9 @@ export const CryptoOpportunity: FC<IProps> = ({
           investment: "crypto",
           plan: heading,
           profit: week,
-          duration: duration
+          duration: duration,
+          min: min,
+          max: max
         }
       });
     } else {
@@ -47,9 +50,9 @@ export const CryptoOpportunity: FC<IProps> = ({
         <h2>CONTRACT DURATION</h2>
         <h3>{duration}</h3>
         <h2>MINIMUM DEPOSIT</h2>
-        <h3>${min}</h3>
+        <h3>${numberWithCommas(min)}</h3>
         <h2>MAXIMUM DEPOSIT</h2>
-        <h3>${max}</h3>
+        <h3>${numberWithCommas(max)}</h3>
         <InvestBtn onclick={Onclick} />
       </Body>
     </Container>

@@ -22,7 +22,9 @@ export const InvestRealEstate = () => {
           investment: "estate",
           plan: title,
           profit: 35,
-          duration: ""
+          duration: "",
+          min: 5000,
+          max: 1000000
         }
       });
     } else {
